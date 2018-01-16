@@ -115,11 +115,18 @@ class UserController extends Controller
     {   
         $user = User::where('id', Auth::id())
                ->get();
+
+        $documents = Document::where(['user_id' => Auth::id(),
+                                      'type' => 0])->get();
+        
         if(count($user)){
-            $view =  view('be.borrower-dashboard',['user' =>$user[0]]);
+            $view =  view('be.borrower-dashboard',['user' => $user[0],
+                                                   'documents' => $documents,
+                                                   'document_type' => '0']);
         }else{
             $view = view('be.borrower-dashboard');
-        }    
+        } 
+
         return $view;
     }
 
@@ -141,6 +148,7 @@ class UserController extends Controller
         $last_name                      = $request->input('last_name');
         $mobile_number                  = $request->input('mobile_number');
         $birth_date                     = $request->input('birth_date');
+        $birth_date                     = date('Y-m-d', strtotime(str_replace('-', '/', $birth_date)));
         $gender                         = $request->input('gender');
         $civil_status                   = $request->input('civil_status');
         $spouse_name                    = $request->input('spouse_name');
@@ -154,7 +162,27 @@ class UserController extends Controller
         $permanent_zip                  = $request->input('permanent_zip');
         $ownership_residence            = $request->input('ownership_residence');
         $permanent_address              = $request->input('permanent_address');
+        
+        
+        if(!empty($request->file('avatar'))){
+          $file = $request->file('avatar');
+          $avatar = time().$file->getClientOriginalName();
+          $filename = $file->getClientOriginalName();
+          $location = time().$file->getClientOriginalName();
+          $file->move(public_path('avatar/uploads'), $location);   
+        }else{
+          $avatar = "";
+        }
 
+        
+
+     
+        
+        $this->validate($request,[
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+        ]);
         
         
         User::where('id', '=', $user_id)
@@ -163,10 +191,10 @@ class UserController extends Controller
                       'middle_name' => $middle_name,
                       'last_name'   => $last_name,
                       'bday'        => $birth_date,
-                      'middle_name'  => $middle_name,
+                      'middle_name' => $middle_name,
                       'civil_status' => $civil_status,
                       'spouse_name' => $spouse_name,
-                      'sss_gsis' => $sss_gsis,
+                      'sss_gsis'    => $sss_gsis,
                       'facebook_id' => $facebook_id,
                       'tin' => $tin,
                       'city' => $city,
@@ -178,10 +206,11 @@ class UserController extends Controller
                       'permanent_city' => $permanent_city,
                       'permanent_address' => $permanent_address,
                       'permanent_zip' => $permanent_zip,
-                      'ownership_of_residense' => $ownership_residence]);
+                      'ownership_of_residense' => $ownership_residence,
+                      'avatar'    =>  $avatar]);
 
         $request->session()->flash('status', 'Profile had been updated!');      
-        return redirect()->route('profile');    
+        return redirect()->route('profile');   
 
     }
 
@@ -244,16 +273,6 @@ class UserController extends Controller
         } 
       }
 
-
-      // $check = User::where(['email_address'       => $email_address,
-      //                       'u_password'          => $password ])->get();
-
-      // if($check->count()){
-      //   //save session id
-      //   session(['user_id' => $check[0]->user_id]);
-
-      //   return redirect('borrower');
-      // }
     }
 
 
@@ -293,7 +312,8 @@ class UserController extends Controller
       
       $request->file('image')->move(public_path('uploads'), $location);                   
       //$request->has('file');
-      return back()->withInput();
+      session()->flash('tab', '1');
+      return redirect()->back();
     
     }
 

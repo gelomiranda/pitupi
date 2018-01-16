@@ -1,18 +1,19 @@
 @extends('layout.master')
 @section('content')
 <div class="row">
+    {{ Form::open(array('url' => 'profile', 'method' => 'post', 'enctype' => 'multipart/form-data')) }}
     <div class="col-md-3">
       <!-- Profile Image -->
       <div class="box box-primary">
         <div class="box-body box-profile">
-          <div class="row">
-            <div class="col-md-12 text-center">
+          <div class="row ">
+              <div class="col-md-12 text-center">
                 <div class="kv-avatar text-center">
-                    <div>
-                        <input id="avatar-1" name="avatar-1" type="file" required>
+                    <div class="text-center">
+                        <input id="avatar-1" name="avatar" type="file">
                     </div>
                 </div>
-            </div>   
+              </div>
           </div>         
         </div>
         <!-- /.box-body -->
@@ -58,20 +59,30 @@
     <div class="col-md-9">
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#activity" data-toggle="tab">User Information</a></li>
-          <li><a href="#document" data-toggle="tab">Uploaded Documents</a></li>
+          <li class="@if( !Session::has('tab') ){{  'active'}} @endif "><a href="#activity" data-toggle="tab">User Information</a></li>
+          <li class="@if( Session::has('tab') and Session('tab') == '1' ) {{  'active'}} @endif "><a href="#document" data-toggle="tab">Uploaded Documents</a></li>
         </ul>
         <div class="tab-content">
-          <div class="active tab-pane" id="activity">
+          <div class=" active tab-pane" id="activity">
               <div class="row">
                 <div class="col-md-12">
+                  @if ($errors->any())
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+                </div>
+                <div class="col-md-12">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Update Profile</h3>
+                    <h3 class="box-title">Update Profile </h3>
                   </div>
                 </div>
               </div>
               <div class="row">
-                {{ Form::open(array('url' => 'profile', 'method' => 'post')) }}
                 <div class="col-md-6">
                     <!-- /.box-header -->
                     {{ session('user') }}
@@ -98,7 +109,7 @@
                         </div>
                         <div class="form-group">
                           <label>Date of Birth</label>
-                          <input type="date" name="birth_date" class="form-control" id="datepicker"  value=" @if(isset($user)) {{ $user->bday }} @endif">
+                          <input name="birth_date" class="form-control" id="datepicker"  value=" @if(isset($user)) {{ $user->bday }} @endif">
                         </div>
                         <div class="form-group">
                           <label>Civil Status</label>
@@ -177,40 +188,133 @@
                   <div class="text-center"><button type="submit" class="btn btn-block btn-success">Update Profile</button></div>
                 </div>
               </div>
-              </form>       
+            </form>    
+          </div>
+
+          <div class="@if( Session::has('tab') and Session('tab') == '1' ) {{  'active'}} @endif tab-pane" id="document">
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="control-label">Select File to Upload</label>
+                  <div id="errorBlock" class="help-block"></div>
+                  <form method="POST" action="{{ URL::to('documents') }}"  enctype="multipart/form-data" >
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="document_type" value="{{ $document_type }}">
+                    <input id="input-folder-2" name="image" class="file-loading" type="file" data-show-preview="false">
+                  </form>
+                </div> 
+              </div>
+                
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">List Of Uploaded Documents</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <table class="table table-bordered">
+                        <tr>
+                          <th>File Name</th>
+                          <th style="width: 10px" class="text-center">Status</th>
+                        </tr>
+                        @foreach ($documents as $document)
+                          <tr>
+                            <td>
+                              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                                {{ $document->filename }}
+                              </button>
+                            </td>
+                            <td><span class="badge bg-red">For Approval</span></td>
+                        </tr>
+                        @endforeach
+                      </table>
+                    </div>
+                </div>      
+              </div>
           </div>
         </div>
-        </div>  
       </div>  
+    </div>      
+  <script>
+  $(document).on('ready', function() {
+     $('#datepicker').datepicker({
+        locale: 'no',
+        format: 'yyyy-mm-dd'
+     });
 
-    </div> 
-<script type="text/javascript">
-        
-    $(document).ready(function(){
-      var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
-          'onclick="">' +
-          '<i class="glyphicon glyphicon-tag"></i>' +
-          '</button>'; 
-
-      $("#avatar-1").fileinput({
-          overwriteInitial: true,
-          maxFileSize: 1500,
-          showClose: false,
-          showCaption: false,
-          browseLabel: '',
-          removeLabel: '',
-          browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-          removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-          removeTitle: 'Cancel or reset changes',
-          elErrorContainer: '#kv-avatar-errors-1',
-          msgErrorClass: 'alert alert-block alert-danger',
-          defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar" class="img-responsive">',
-          layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-          allowedFileExtensions: ["jpg", "png", "gif"]
+      $("#input-folder-2").fileinput({
+          browseLabel: 'Select File To Upload...',
+          previewFileIcon: '<i class="fa fa-file"></i>',
+          allowedPreviewTypes: null, // set to empty, null or false to disable preview for all types
+          previewFileIconSettings: {
+              'doc': '<i class="fa fa-file-word-o text-primary"></i>',
+              'xls': '<i class="fa fa-file-excel-o text-success"></i>',
+              'ppt': '<i class="fa fa-file-powerpoint-o text-danger"></i>',
+              'jpg': '<i class="fa fa-file-photo-o text-warning"></i>',
+              'pdf': '<i class="fa fa-file-pdf-o text-danger"></i>',
+              'zip': '<i class="fa fa-file-archive-o text-muted"></i>',
+              'htm': '<i class="fa fa-file-code-o text-info"></i>',
+              'txt': '<i class="fa fa-file-text-o text-info"></i>',
+              'mov': '<i class="fa fa-file-movie-o text-warning"></i>',
+              'mp3': '<i class="fa fa-file-audio-o text-warning"></i>',
+          },
+          previewFileExtSettings: {
+              'doc': function(ext) {
+                  return ext.match(/(doc|docx)$/i);
+              },
+              'xls': function(ext) {
+                  return ext.match(/(xls|xlsx)$/i);
+              },
+              'ppt': function(ext) {
+                  return ext.match(/(ppt|pptx)$/i);
+              },
+              'jpg': function(ext) {
+                  return ext.match(/(jp?g|png|gif|bmp)$/i);
+              },
+              'zip': function(ext) {
+                  return ext.match(/(zip|rar|tar|gzip|gz|7z)$/i);
+              },
+              'htm': function(ext) {
+                  return ext.match(/(php|js|css|htm|html)$/i);
+              },
+              'txt': function(ext) {
+                  return ext.match(/(txt|ini|md)$/i);
+              },
+              'mov': function(ext) {
+                  return ext.match(/(avi|mpg|mkv|mov|mp4|3gp|webm|wmv)$/i);
+              },
+              'mp3': function(ext) {
+                  return ext.match(/(mp3|wav)$/i);
+              },
+          }
       });
 
-    });
+     var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' + 
+         'onclick="alert($(this).parent().html());">' +
+         '<i class="glyphicon glyphicon-floppy-disk"></i>' +
+         '</button>'; 
 
-</script>    
+     $("#avatar-1").fileinput({
+         overwriteInitial: true,
+         maxFileSize: 1500,
+         showClose: false,
+         showCaption: false,
+         browseLabel: '',
+         removeLabel: '',
+         browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+         removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+         removeTitle: 'Cancel or reset changes',
+         elErrorContainer: '#kv-avatar-errors-1',
+         msgErrorClass: 'alert alert-block alert-danger',
+         defaultPreviewContent: '<img src="{{asset("avatar/uploads/".$user->avatar)}}" alt="Your Avatar" class="img-responsive">',
+         layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+         allowedFileExtensions: ["jpg", "png", "gif"]
+     });
+
+   
+  });
+  </script>
+</div> 
+  
 @endsection     
 

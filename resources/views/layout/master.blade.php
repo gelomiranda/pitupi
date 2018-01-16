@@ -25,6 +25,7 @@
   <link href="{{ URL::asset('css/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
   
 
+  <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/style.css') }}">
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -120,7 +121,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{URL::to('profile')}}"><i class="fa fa-user"></i> My Profile</a></li>
-            <li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> My Documents</a></li>
+            <!--<li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> My Documents</a></li>-->
           </ul>
         </li>
         <li class="active treeview">
