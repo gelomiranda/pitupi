@@ -5,7 +5,9 @@
     <h4>Select Loan Category</h4>
     <ul class="nav nav-tabs">
       @foreach ($loans as $loan)
-        <li class="@if($loop->iteration == 1) {{ 'active' }} @endif"><a data-toggle="tab" href="#{{ $loan->loan_id }}">{{ $loan->description }}</a></li>
+        <li class="@if($loop->iteration == 1) {{ 'active' }} @endif">
+          <a data-toggle="tab" href="#{{ $loan->loan_id }}">{{ $loan->description }}</a>
+        </li>
       @endforeach
     </ul>
     <div class="tab-content">
