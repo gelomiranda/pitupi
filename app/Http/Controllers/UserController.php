@@ -335,8 +335,8 @@ class UserController extends Controller
       $l_transaction->interest = $interest;
       $l_transaction->terms = $terms;
       $l_transaction->save();
-      
       return back();
+    
     }
 
 

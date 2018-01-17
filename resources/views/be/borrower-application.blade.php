@@ -3,14 +3,17 @@
 <div class="row">
   <div class="col-md-12">
     <h4>Select Loan Category</h4>
-    <ul class="nav nav-tabs">
+    <div class="nav-tabs-custom">
+    <ul class="nav nav-tabs ">
       @foreach ($loans as $loan)
-        <li class="@if($loop->iteration == 1) {{ 'active' }} @endif"><a data-toggle="tab" href="#{{ $loan->loan_id }}">{{ $loan->description }}</a></li>
+        <li class=" with-border @if($loop->iteration == 1) {{ 'active' }} @endif">
+          <a data-toggle="tab" href="#{{ $loan->loan_id }}"> {{ $loan->description }}</a>
+        </li>
       @endforeach
     </ul>
-    <div class="tab-content">
+    <div class="tab-content" >
       @foreach ($loans as $loan)
-        <div id="{{ $loan->loan_id }}" class="tab-pane fade in  @if($loop->iteration == 1) {{ 'active' }} @endif ">
+        <div id="{{ $loan->loan_id }}"  style="background-color:#fff;" class="tab-pane fade in  @if($loop->iteration == 1) {{ 'active' }} @endif ">
           <h3>{{ $loan->description }} Loan</h3>
           <p>Exclusively available to employees of accredited companies.</p>
           <p>Borrow between 
@@ -29,8 +32,8 @@
              @endforeach     
           </p>
           <p>As low as <span class="label label-primary">{{ $loan->interest }}%</span> interest per month</p>
-          <p>Monthly Payments: <span  class=" label label-success" id="{{ $loan->description }}_estimated_monthly">0.00</span></p>
-          <p>Monthly Income: <span  class=" label label-danger" id="{{ $loan->description }}_estimated_income">0.00</span></p>
+          <p>Monthly Payments: <span  class="label label-success" id="{{ $loan->description }}_estimated_monthly">0.00</span></p>
+          <p>Monthly Income: <span  class="label label-danger" id="{{ $loan->description }}_estimated_income">0.00</span></p>
           
           {{ Form::open(array('url' => 'application', 'method' => 'post')) }}
               <div class="form-group">
@@ -60,10 +63,10 @@
                 <div class="text-center"><button type="submit" class="btn btn-block btn-success">Apply</button></div>
               </div>
           </form>
-          
         </div>
       @endforeach
     </div>
+  </div>
   </div>      
 </div>     
 <script type="text/javascript">
