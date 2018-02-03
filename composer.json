@@ -9,7 +9,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "nexmo/laravel": "dev-master as 1.0",
+        "nexmo/client": "dev-master as 1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

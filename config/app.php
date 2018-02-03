@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Input' => Illuminate\Support\Facades\Input::class,
         'Custom' => App\Helpers\Custom::class,
+        'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
 
     ],
 

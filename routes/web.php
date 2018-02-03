@@ -112,5 +112,14 @@ Route::get('/admin/user/{id}', 'AdminController@show')->name('user');
 Route::post('/admin/approve_loan', 'AdminController@approve_loan')->name('approve_loan');
 Route::post('/admin/transfer', 'AdminController@transfer')->name('transfer');
 
+Route::get('/sms/send/{to}', function(\Nexmo\Client $nexmo, $to){
+    $message = $nexmo->message()->send([
+        'to' => $to,
+        'from' => '@PeerToPeer',
+        'text' => 'Decson M-Test'
+    ]);
+    Log::info('sent message: ' . $message['message-id']);
+});
+
 
 
