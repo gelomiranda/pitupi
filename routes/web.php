@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('fe/landing-page');
+    return view('fe/landing_fcp');
 });
 
 
