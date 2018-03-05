@@ -2,7 +2,6 @@
 @section('content')      
     <div class="row">
         <div class="col-md-12">
-          <h4 class="text-center"><i class="icon-envelope"></i><strong>Welcome to our Site</strong></h4>
                   <div class="wizard">
                       <div class="wizard-inner">
                           <div class="connecting-line"></div>
@@ -28,7 +27,6 @@
                                       </span>
                                   </a>
                               </li>
-
                               <li role="presentation" class="disabled">
                                   <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
                                       <span class="round-tab">
@@ -42,6 +40,44 @@
                       <form role="form">
                           <div class="tab-content">
                               <div class="tab-pane active" role="tabpanel" id="step1">
+                                  <h3>Loan Amount</h3>
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                          <p>Exclusively available to employees of accredited companies.</p>
+                                          <p>Borrow between 1,000 - 10,000 </p>
+                                          <p>As low as 5 - 10 % interest per month</p>
+                                          <div class="form-group">
+                                            <select class="form-control">
+                                              <option>Select Loan Amount</option>
+                                              <option>1,000 PHP</option>
+                                              <option>2,000 PHP</option>
+                                              <option>3,000 PHP</option>
+                                              <option>4,000 PHP</option>
+                                              <option>5,000 PHP</option>
+                                              <option>6,000 PHP</option>
+                                              <option>7,000 PHP</option>
+                                              <option>8,000 PHP</option>
+                                              <option>8,000 PHP</option>
+                                              <option>10,000 PHP</option>
+                                            </select>
+                                          </div> 
+                                          <div class="form-group">
+                                            <label class="radio-inline"><input type="radio" name="optradio">15 Days</label>
+                                            <label class="radio-inline"><input type="radio" name="optradio">30 Days</label>
+                                          </div>     
+                                          <p>Estimated Amount</p>
+                                          <p>Estimated Monthly Repayments:</p>
+                                          <p>Recommended Income:</p>
+                                      
+                                    </div>
+                                  </div>
+                                  <ul class="list-inline pull-right">
+                                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                      <li><button type="button" class="btn btn-default next-step">Skip</button></li>
+                                      <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                                  </ul>
+                              </div>
+                              <div class="tab-pane" role="tabpanel" id="step3">
                                   <h3>Personal Information</h3>
                                   <div class="row">
                                     <div class="col-md-4">
@@ -146,46 +182,7 @@
                                       <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                   </ul>
                               </div>
-                              <div class="tab-pane" role="tabpanel" id="step3">
-                                  <h3>Loan Amount</h3>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                          <p>Exclusively available to employees of accredited companies.</p>
-                                          <p>Borrow between 1,000 - 10,000 </p>
-                                          <p>As low as % interest per month</p>
-                                          <div class="form-group">
-                                            <select class="form-control">
-                                              <option>1,000 PHP</option>
-                                              <option>2,000 PHP</option>
-                                              <option>3,000 PHP</option>
-                                              <option>4,000 PHP</option>
-                                              <option>5,000 PHP</option>
-                                              <option>6,000 PHP</option>
-                                              <option>7,000 PHP</option>
-                                              <option>8,000 PHP</option>
-                                              <option>8,000 PHP</option>
-                                              <option>10,000 PHP</option>
-                                            </select>
-                                          </div> 
-                                          <div class="form-group">
-                                            <select class="form-control">
-                                              <option>15 Days</option>
-
-                                              <option>30 Days</option>
-                                            </select>
-                                          </div>     
-                                          <p>Estimated Amount</p>
-                                          <p>Estimated Monthly Repayments:</p>
-                                          <p>Recommended Income:</p>
-                                      
-                                    </div>
-                                  </div>
-                                  <ul class="list-inline pull-right">
-                                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                      <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                                      <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                                  </ul>
-                              </div>
+                              
                               <div class="tab-pane" role="tabpanel" id="complete">
                                   <h3>Complete</h3>
                                   <p>You have successfully completed all steps.</p>
