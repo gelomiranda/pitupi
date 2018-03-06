@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-10 col-xs-10">
                   <span class="clearfix"><b>Validation</b></span>
-                  <span class="clearfix">We will contact you and once validated time to get your cash.</span>
+                  <span class="clearfix">We will contact you and once validated and approve time to get your cash.</span>
                 </div>
               </div>
               <br>
@@ -145,57 +145,32 @@
                                       <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                                   </ul>
                               </div>
-                              <div class="tab-pane" role="tabpanel" id="step3">
+                              <div class="tab-pane" role="tabpanel" id="step2">
                                   <h3>Personal Information</h3>
                                   <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                       <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="First Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Cellphone Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                       </div>
                                       <div class="form-group">
                                         <input type="text" class="form-control" name="email_address" required="required" placeholder="Email Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                       </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Unit No. of Building" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="City" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
                                     </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Middle Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Mobile Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Village Street" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Zip Code" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Last Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Birthdate" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="Barangay" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                      <div class="form-group">
-                                        <input type="text" class="form-control" name="email_address" required="required" placeholder="City" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                      </div>
-                                     </div>
+                                    
+                                    
                                   </div>
                                   <ul class="list-inline pull-right">
+                                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                                       <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                                   </ul>
                               </div>
-                              <div class="tab-pane" role="tabpanel" id="step2">
+                              <div class="tab-pane" role="tabpanel" id="step3">
                                   <h3>Requirements</h3>
                                   <div class="row">
                                     <div class="col-md-6">
@@ -246,8 +221,7 @@
                                   </div>
                                   
                                   <ul class="list-inline pull-right">
-                                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                      <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                                      <li><button type="button" class="btn btn-primary next-step">Save</button></li>
                                   </ul>
                               </div>
                               
