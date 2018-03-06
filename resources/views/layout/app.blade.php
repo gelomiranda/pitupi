@@ -7,12 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="-1" />
   <!-- styles -->
   <link rel="stylesheet" href="{{ URL::asset('assets/css/fancybox/jquery.fancybox.css') }}">
   <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet" />
   <link href="{{ URL::asset('assets/css/bootstrap-theme.css') }}" rel="stylesheet" />
   <link rel="stylesheet" href="{{ URL::asset('assets/css/slippry.css') }}">
   <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  
   <link rel="stylesheet" href="{{ URL::asset('assets/color/default.css') }}">
   <!-- =======================================================
     Theme Name: Groovin

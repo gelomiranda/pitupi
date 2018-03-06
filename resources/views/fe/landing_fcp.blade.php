@@ -1,42 +1,113 @@
 @extends('layout.app')
 @section('content')      
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="wizard">
+              <h3 class="text-center">4 Easy Steps to get a Cash Loan</h3>
+              <br>
+              <div class="row">
+                <div class="col-lg-2 col-md-2 col-xs-2">
+                    <a data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <span class="round-tab">
+                            1
+                        </span>
+                    </a>
+                </div>
+                <div class="col-lg-10 col-md>-10 col-xs-10">
+                  <span class="clearfix"><b>Loan Amount</b></span>
+                  <span class="clearfix">How much do you need?</span>
+                  <span class="clearfix">See how much you can get and the interest.</span>
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    <a data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <span class="round-tab">
+                            2
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-10 col-xs-10">
+                  <span class="clearfix"><b>Personal Information</b></span>
+                  <span class="clearfix">Let us know you personally.</span>
+                  <span class="clearfix">Fill the the form with your personal data.</span>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    <a data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <span class="round-tab">
+                            3
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-10 col-xs-10">
+                  
+                  <span class="clearfix"><b>Requirements </b></span>
+                  <span class="clearfix">Help us know you more.</span>
+                  <span class="clearfix">Upload your ID's and a selifie.</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-xs-2">
+                    <a data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <span class="round-tab">
+                            4
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-10 col-xs-10">
+                  <span class="clearfix"><b>Validation</b></span>
+                  <span class="clearfix">We will contact you and once validated time to get your cash.</span>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <p><b>Fixed</b> interest is given at <b>5%</b> for <b>15-days</b> loan period and <b>10%</b> for <b>30-days</b> loan duration.</p>
+                  <p><b>Estimated amount</b> reflects the total payable including interest, taxes and admin fees.</p>
+                  <p><b>Recommended income</b> is a projected debtor monthly income to avail the loan amount selected. </p>
+                </div>
+              </div>  
+            </div>
+        </div>
+        <div class="col-md-6">
                   <div class="wizard">
+                      <h4 class="text-center">Need Cash? Just follow the steps.</h4>
                       <div class="wizard-inner">
-                          <div class="connecting-line"></div>
+                        <div class="connecting-line"></div>
                           <ul class="nav nav-tabs" role="tablist">
                               <li role="presentation" class="active">
                                   <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                                       <span class="round-tab">
-                                          <i class="glyphicon glyphicon-user"></i>
+                                          1
                                       </span>
                                   </a>
                               </li>
                               <li role="presentation" class="disabled">
                                   <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                                       <span class="round-tab">
-                                          <i class="glyphicon glyphicon-pencil"></i>
+                                          2
                                       </span>
                                   </a>
                               </li>
                               <li role="presentation" class="disabled">
                                   <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
                                       <span class="round-tab">
-                                          <i class="glyphicon glyphicon-picture"></i>
+                                          3
                                       </span>
                                   </a>
                               </li>
                               <li role="presentation" class="disabled">
                                   <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
                                       <span class="round-tab">
-                                          <i class="glyphicon glyphicon-ok"></i>
+                                          4
                                       </span>
                                   </a>
                               </li>
                           </ul>
                       </div>
-
                       <form role="form">
                           <div class="tab-content">
                               <div class="tab-pane active" role="tabpanel" id="step1">
@@ -44,7 +115,7 @@
                                   <div class="row">
                                     <div class="col-md-12">
                                           <p>Exclusively available to employees of accredited companies.</p>
-                                          <p>Borrow between 1,000 - 10,000 </p>
+                                          <p>Borrow between <span class="label label-primary">1,000</span> - <span class="label label-primary">10,000</span> </p>
                                           <p>As low as 5 - 10 % interest per month</p>
                                           <div class="form-group">
                                             <select class="form-control">
@@ -66,14 +137,11 @@
                                             <label class="radio-inline"><input type="radio" name="optradio">30 Days</label>
                                           </div>     
                                           <p>Estimated Amount</p>
-                                          <p>Estimated Monthly Repayments:</p>
                                           <p>Recommended Income:</p>
                                       
                                     </div>
                                   </div>
                                   <ul class="list-inline pull-right">
-                                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                      <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                                       <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                                   </ul>
                               </div>
