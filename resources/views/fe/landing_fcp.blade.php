@@ -106,7 +106,6 @@
                                   <option value="6000">6,000 PHP</option>
                                   <option value="7000">7,000 PHP</option>
                                   <option value="8000">8,000 PHP</option>
-                                  <option value="9000">8,000 PHP</option>
                                   <option value="10000">10,000 PHP</option>
                                 </select>
                               </div> 
