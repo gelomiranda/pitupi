@@ -191,7 +191,7 @@
                               </div>
                               <div class="form-group">
                                 <label class="control-label">Referred By</label>
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name e.g (Juan Dela Cruz)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
                                 <input type="text" class="form-control" name="email_address" required="required" placeholder="Area + Phone Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
