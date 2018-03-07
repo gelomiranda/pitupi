@@ -126,16 +126,16 @@
                           <div class="row">
                             <div class="col-md-12">
                               <div class="form-group">
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name e.g (Juan Dela Cruz)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Cellphone Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Cellphone Number e.g(0910xxxxxxx)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
                                 <input type="text" class="form-control" name="email_address" required="required" placeholder="Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Email Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Email Address e.g(juan@gmail.com)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                             </div>
                           </div>
