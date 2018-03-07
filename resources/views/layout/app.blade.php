@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Fast Cash Pinoy</title>
+  <title>FastCashPinoy Philippines | Get a loan from FastCashPinoy</title>
+  <meta content="0;URL='http://fastcashpinoy.com/'" />  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -41,18 +42,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">FastCashPinoy</a>
+          <a class="navbar-brand text-green" href="index.html">FastCashPinoy</a>
         </div>
 
         <div class="navigation">
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <nav>
               <ul class="nav navbar-nav navbar-right">
-                <li class="current"><a href="#intro">Home</a></li>
+                <!--<li class="current"><a href="#intro">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#works">Works</a></li>
-                <li><a href="{{ url('/#contact') }}">Contact</a></li>
-                <li><a href="{{ url('/register') }}">Register / Logins</a></li>
+                <li><a href="{{ url('/#contact') }}">Contact</a></li>-->
+                <li><a href="{{ url('/register') }}">Login</a></li>
               </ul>
             </nav>
           </div>
@@ -91,7 +92,7 @@
           <div class="col-md-12">
             <div class="aligncenter">
               <p>
-                &copy; Groovin Theme - All right reserved
+                &copy; Fast Cash Pinoy - All right reserved
               </p>
               <div class="credits">
                 <!--
@@ -100,7 +101,6 @@
                   Licensing information: https://bootstrapmade.com/license/
                   Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Groovin
                 -->
-                <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
             </div>
           </div>

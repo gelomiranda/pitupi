@@ -5,6 +5,14 @@
   background: #5C9F24;
 }
 
+.text-green{
+  color: #5C9F24 !important;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
 a {
   color: #5C9F24;
 }
