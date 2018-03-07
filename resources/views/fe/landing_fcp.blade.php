@@ -40,7 +40,6 @@
                   <span class="clearfix">Show us that you can pay your loan.</span>
                 </div>
               </div>
-              <br/>
               <hr/>
               <div class="row">
                 <div class="col-md-12 col-xs-12">
