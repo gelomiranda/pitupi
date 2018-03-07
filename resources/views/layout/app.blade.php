@@ -42,7 +42,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand text-green" href="index.html">FastCashPinoy</a>
+          <a class="navbar-brand text-green" href="/">FastCashPinoy</a>
         </div>
 
         <div class="navigation">
