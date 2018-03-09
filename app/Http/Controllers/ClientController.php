@@ -80,8 +80,15 @@ class ClientController extends Controller
         $client->bankname         = $request->input('bankname');
         $client->bankno       = $request->input('bankno');
         $client->save();
-   
-       
+        
+        Mail::send('email.testmail',['name' => $request->input('fullname'),'amount' => $request->input('loanamount' ), 'terms' => $request->input('terms')], function ($message) {
+           $emails = ['karlo.largoza@gmail.com ', 'yvone_2989@yahoo.com ','angelomirandagarcia@gmail.com'];
+
+           $message->from($emails, 'New Application - Fast Cash Pinoy');
+
+           $message->to('angelomirandagarcia@gmail.com')->subject('New Application');
+
+        });
         $request->session()->flash('status', 'Application has been sent!');   
         return redirect()->back();   
 

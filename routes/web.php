@@ -16,23 +16,7 @@ Route::get('/', function () {
     return view('fe/landing_fcp');
 });
 
-Route::get('sendemail', function () {
 
-    $data = array(
-        'name' => "Learning Laravel",
-    );
-
-    Mail::send('email.testmail', $data, function ($message) {
-
-        $message->from('angelomirandagarcia@gmail.com', 'Learning Laravel');
-
-        $message->to('angelomirandagarcia@gmail.com')->subject('Learning Laravel test email');
-
-    });
-
-    return "Your email has been sent successfully";
-
-});
 
 /*My Client routes*/
 

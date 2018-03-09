@@ -1,10 +1,11 @@
 <html>
 <head>
-	<title>Test Mail</title>
+	<title>Application Form</title>
 </head>
 <body>
-	<p>Dear {{ $name }},</p>
-	<p>Thank you for registering to our platform. To confirm your email address, please click on the link below.</p>
+	<p>Dear Administrator,</p>
+	<p>New Application Name {{$name}} wants to borrow {{ $amount }} for {{ $terms }} days.</p>
+	<p>Kindly login to your dashboard to review his/her documents.</p>
 	
 	<p>Regards,</p>
 	<p>Team Elite</p>
