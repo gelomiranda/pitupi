@@ -8,7 +8,7 @@ use View;
 use Session;
 use Mail;
 use Helper;
-
+use Redirect;
 use Validator;
 class ClientController extends Controller
 {
@@ -78,8 +78,12 @@ class ClientController extends Controller
         $client->billingstatement     = $location_id_4;
         $client->letter         = $location_id_5;
         $client->bankname         = $request->input('bankname');
-        $client->bankno       = $request->input('no');
+        $client->bankno       = $request->input('bankno');
         $client->save();
+   
+       
+        $request->session()->flash('status', 'Application has been sent!');   
+        return redirect()->back();   
 
     }
 

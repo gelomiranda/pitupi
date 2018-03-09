@@ -53,6 +53,11 @@
         <div class="col-md-6">
           <div class="wizard">
               <h4 class="text-center">Need Cash? Just follow the steps.</h4>
+              @if (Session::has('status'))
+                <div class="alert alert-success">
+                  <strong>Success!</strong> {!! session('status') !!}
+                </div>
+              @endif
 
               @if ($errors->any())
                   <div class="alert alert-danger">
