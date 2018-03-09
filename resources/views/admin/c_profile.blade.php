@@ -6,12 +6,12 @@
       <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
           <li class="active"><a href="#timeline" data-toggle="tab">Uploaded Documents</a></li>
-          <li><a href="#history" data-toggle="tab">History</a></li>
+          <li><a href="#history" data-toggle="tab">Bank Details</a></li>
         </ul>
         <div class="tab-content">
          
           <!-- /.tab-pane -->
-          <div class="tab-pane" id="timeline">
+          <div class="active tab-pane" id="timeline">
            <div class="box">
              
              <!-- /.box-header -->
@@ -19,15 +19,46 @@
                <table class="table table-bordered">
                  <tr>
                    <th width="10%">Docs. ID</th>
-                   <th>File Name</th>
-                   <th style="width: 10px" class="text-center">Status</th>
+                   <th>View</th>
                  </tr>
                  <tbody>
                   <tr>
+                    <td>Government ID #1</td>
+                    <td>
+                       <button type="button" class="btn my_modal btn-default btn-block" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->id1 ) }}">
+                         View Me
+                       </button>
+                     </td>
+                  </tr>
+                  <tr>
+                    <td>Government ID #2</td>
+                    <td>
+                       <button type="button" class="btn my_modal btn-default btn-block" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->id2 ) }}">
+                         View Me
+                       </button>
+                     </td>
+                  </tr>
+                  <tr>
                     <td>COE/Payslip</td>
                     <td>
-                       <button type="button" class="btn my_modal btn-default" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->id1 ) }}">
-                         View
+                       <button type="button" class="btn my_modal btn-default btn-block" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->payslipcoe ) }}">
+                         View Me
+                       </button>
+                     </td>
+                  </tr>
+                  <tr>
+                    <td>Billing Statement</td>
+                    <td>
+                       <button type="button" class="btn my_modal btn-default btn-block" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->billingstatement ) }}">
+                         View Me
+                       </button>
+                     </td>
+                  </tr>
+                   <tr>
+                    <td>Letter</td>
+                    <td>
+                       <button type="button" class="btn my_modal btn-default btn-block" data-toggle="modal" data-target="#modal-default" data-link=" {{ asset('uploads/'.$client[0]->letter ) }}">
+                         View Me
                        </button>
                      </td>
                   </tr>
@@ -38,7 +69,28 @@
           </div>
           <!-- /.tab-pane -->
 
-          
+          <!-- /.tab-pane -->
+          <div class="tab-pane" id="history">
+           <div class="box">
+             
+             <!-- /.box-header -->
+             <div class="box-body">
+               <table class="table table-bordered">
+                 <tr>
+                   <th width="15%">Bank Account Name</th>
+                   <th>{{$client[0]->bankname}}</th>
+                 </tr>
+                 </tbody>
+                  <tr>
+                   <th width="15%">Bank Account Number</th>
+                   <th>{{$client[0]->bankno}}</th>
+                 </tr>
+                 </tbody>
+               </table>
+             </div>
+            </div>
+          </div>
+          <!-- /.tab-pane -->
 
           <!-- /.tab-pane -->
         </div>

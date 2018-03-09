@@ -31,7 +31,7 @@ class ClientController extends Controller
     {
 
         $validator = $this->validate($request, [
-            'fullname' => 'max:255|alpha',
+            'fullname' => 'required',
             'mobileno' => 'required|numeric|min:11',
             'emailaddress' => 'required:email|unique:client,emailaddress',
             'loanamount' => 'required',

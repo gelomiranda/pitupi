@@ -161,7 +161,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{URL::to('admin/client')}}"><i class="fa fa-user"></i> Client Profile</a></li>
+            <li><a href="{{URL::to('admin/clients')}}"><i class="fa fa-user"></i> Client Profile</a></li>
           </ul>
           <!--<ul class="treeview-menu">
             <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user"></i> Lender Profile</a></li>

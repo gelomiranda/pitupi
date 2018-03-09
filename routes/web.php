@@ -26,6 +26,7 @@ Route::post('client/create', 'ClientController@create');
 
 Route::get('logout', function () {
     Auth::logout();
+    return view('fe/landing_fcp');
 });
 
 // Route::get('/register', function () {
