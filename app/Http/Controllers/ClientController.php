@@ -43,12 +43,7 @@ class ClientController extends Controller
             'bankno' => 'required|numeric',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        }
-        else {
-            
-        }
+        
 
         $client = new client;
         $id_1 = $request->file('id1');
