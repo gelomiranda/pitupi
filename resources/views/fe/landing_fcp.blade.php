@@ -282,9 +282,9 @@
         myamount = amount;
         totalAmount = 0;
         if( day == 30 ){
-         totalAmount = (amount * 0.1) + Number(myamount);
+         totalAmount = (amount * 0.1) + Number(myamount) + 200;
         }else{
-         totalAmount = (amount * 0.05) + Number(myamount);
+         totalAmount = (amount * 0.05) + Number(myamount) + 200;
         }
         return totalAmount;
       }
