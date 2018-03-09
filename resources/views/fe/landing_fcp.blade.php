@@ -173,24 +173,24 @@
                               <div class="form-group">
                                 <label class="control-label">Goverment ID #1</label>
                                 <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="id1"  class="file-loading" required="required" type="file" data-show-preview="false"/>
+                                <input id="input-folder-2" name="id1"  class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
                               </div>
 
                               <div class="form-group">
                                 <label class="control-label">Goverment ID #2</label>
                                 <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="id2"  class="file-loading" required="required" type="file" data-show-preview="false"/>
+                                <input id="input-folder-2" name="id2"  class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
                               </div>
 
                               <div class="form-group">
                                 <label class="control-label">Billing Statement</label>
                                 <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="billingstatement" class="file-loading" required="required" type="file" data-show-preview="false"/>
+                                <input id="input-folder-2" name="billingstatement" class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
                               </div>
                               <div class="form-group">
                                 <label class="control-label">Payslip/COE</label>
                                 <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="payslipcoe" class="file-loading" required="required" type="file" data-show-preview="false"/>
+                                <input id="input-folder-2" name="payslipcoe" class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -204,7 +204,7 @@
                                   <p>I promise to pay via BPI account deposit on (Date). Failure to pay on the said date will result of penalty of 1% per day starting (Date).</p>
                                 </div>
                                 <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="letter" class="file-loading" type="file" data-show-preview="false">
+                                <input id="input-folder-2" name="letter" class="file-loading" type="file" data-show-preview="false" accept="image/*" >
                               </div>
                               <div class="form-group">
                                 <label class="control-label">Referred By</label>

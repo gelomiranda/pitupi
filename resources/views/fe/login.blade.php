@@ -28,7 +28,7 @@
             {{ Form::open(array('url' => 'login', 'method' => 'post')) }}
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
               <div class="form-group">
-                <input type="text" class="form-control" name="email_address" required="required" placeholder="Email Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <input type="text" class="" name="email_address" required="required" placeholder="Email Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                 <div class="validation"></div>
               </div>
               <div class="form-group">

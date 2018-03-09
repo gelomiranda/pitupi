@@ -934,7 +934,7 @@ ul.the-icons {
 	z-index: 999;
 }
 
-#contact-form input[type=text],input[type=number],#contact-form input[type=email], .contactForm textarea,select {
+#contact-form input[type=text],input[type=password],input[type=number],#contact-form input[type=email], .contactForm textarea,select {
 	width: 100%;
 	background: rgba(227, 231, 228, 1);
 	font-family: 'Lato', sans-serif;
@@ -944,7 +944,7 @@ ul.the-icons {
 	vertical-align: middle;
 	padding:0 10px;
 }
-#contact-form input[type=text]:focus,#contact-form input[type=email]:focus, .contactForm textarea:focus {
+#contact-form input[type=password], input[type=text]:focus,#contact-form input[type=email]:focus, .contactForm textarea:focus {
 	background: rgba(101, 106, 100, 1);
 	color: #eff1ef;
 	box-shadow: none;
