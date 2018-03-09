@@ -11,9 +11,17 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('fe/landing_fcp');
 });
+
+/*My Client routes*/
+
+
+Route::post('client/create', 'ClientController@create');
+
+/*End client routest*/
 
 
 Route::get('logout', function () {
@@ -108,7 +116,13 @@ Route::get('/borrower/credit_questionnaire', 'BorrowerController@credit_question
 /*Admin Route*/
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/users', 'AdminController@users')->name('users');
+
+Route::get('/admin/clients', 'AdminController@clients')->name('clients');
+
+Route::get('/admin/client/{id}', 'AdminController@show')->name('client');
+
 Route::get('/admin/user/{id}', 'AdminController@show')->name('user');
+
 Route::post('/admin/approve_loan', 'AdminController@approve_loan')->name('approve_loan');
 Route::post('/admin/transfer', 'AdminController@transfer')->name('transfer');
 

@@ -161,6 +161,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="{{URL::to('admin/client')}}"><i class="fa fa-user"></i> Client Profile</a></li>
+          </ul>
+          <!--<ul class="treeview-menu">
             <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user"></i> Lender Profile</a></li>
             <li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> Lender Documents</a></li>
             <li><a href="{{URL::to('documents')}}"><i class="fa fa-book"></i> Lender Loans</a></li>
@@ -177,15 +180,9 @@
             <li><a href="{{URL::to('profile')}}"><i class="fa fa-user"></i> Investor Accounts</a></li>
             <li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> Lender Documents</a></li>
           </ul>
-        </li>
+        </li>-->
         @endif
         <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Settings</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
           <ul class="treeview-menu">
             <li><a href="{{URL::to('logout')}}"><i class="fa fa-sign-out"></i>Logout</a></li>
           </ul>

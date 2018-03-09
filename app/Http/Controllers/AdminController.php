@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+
+use App\Client;
 use App\Document;
 use App\L_transaction;
 use Auth;
@@ -50,25 +52,29 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $user = User::find($id);
-        $p_documents = Document::where(['user_id' => $id,
-                                        'type' => 0])->get();
+    // public function show($id)
+    // {
+    //     $user = User::find($id);
+    //     $p_documents = Document::where(['user_id' => $id,
+    //                                     'type' => 0])->get();
 
-        $t_documents = Document::where(['user_id' => $id,
-                                        'type' => 1])->get();
-        $l_transactions = L_transaction::where('user_id',$id)->get();
+    //     $t_documents = Document::where(['user_id' => $id,
+    //                                     'type' => 1])->get();
+    //     $l_transactions = L_transaction::where('user_id',$id)->get();
 
         
 
 
-        return view('admin.profile',['user' => $user,
-                                     'l_transactions' => $l_transactions,
-                                     'p_documents' => $p_documents,
-                                     't_documents' => $t_documents]);
-    }
+    //     return view('admin.profile',['user' => $user,
+    //                                  'l_transactions' => $l_transactions,
+    //                                  'p_documents' => $p_documents,
+    //                                  't_documents' => $t_documents]);
+    // }
 
+    public function show($id){
+        $client = Client::where(['ID' => $id])->get();
+        return view('admin.c_profile',['client' => $client]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -106,11 +112,28 @@ class AdminController extends Controller
         //
     }
 
+    
+
     public function users()
     {
         $users = User::all();
-        return view('admin.users',['users' => $users]);
+        return view('admin.client',['users' => $users]);
     }
+
+
+    public function clients()
+    {
+        $clients = Client::all();
+        return view('admin.client',['clients' => $clients]);
+    }
+
+    public function client($id)
+    {
+        $clients = Client::all();
+        return view('admin.client',['clients' => $clients]);
+    }
+
+
 
     public function approve_loan(Request $request){
         L_transaction::where('loan_transaction_id', $request->loan_id)

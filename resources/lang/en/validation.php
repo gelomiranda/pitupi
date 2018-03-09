@@ -116,6 +116,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'mobileno' => 'Mobile Number',
+        'fullname' => 'Full name',
+        'terms' => 'Terms',
+        'bankname' => 'Bank Account Name',
+        'bankno' => 'Bank Account Number',
+        'emailaddress' => 'Email address',
+    ],
 
 ];
