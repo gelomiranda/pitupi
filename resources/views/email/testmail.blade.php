@@ -4,7 +4,7 @@
 </head>
 <body>
 	<p>Dear Administrator,</p>
-	<p>New Application Name {{$name}} wants to borrow {{ $amount }} for {{ $terms }} days.</p>
+	<p>New Application from {{$name}} wants to borrow {{ $amount }} for {{ $terms }} days.</p>
 	<p>Kindly login to your dashboard to review his/her documents.</p>
 	
 	<p>Regards,</p>
