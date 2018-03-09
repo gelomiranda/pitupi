@@ -123,6 +123,8 @@
                                   <option value="8000" @if ( old('loanamount')  === '8000') {{ "selected='selected' "}} @endif>8,000 PHP</option>
                                   <option value="9000" @if ( old('loanamount')  === '9000') {{ "selected='selected' "}} @endif>9,000 PHP</option>
                                   <option value="10000" @if ( old('loanamount')  === '10000') {{ "selected='selected' "}} @endif>10,000 PHP</option>
+                                  <option value="20000" @if ( old('loanamount')  === '20000') {{ "selected='selected' "}} @endif>20,000 PHP</option>
+                                  <option value="30000" @if ( old('loanamount')  === '30000') {{ "selected='selected' "}} @endif>30,000 PHP</option>
                                 </select>
                               </div> 
                               <div class="form-group">
