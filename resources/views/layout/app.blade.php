@@ -53,7 +53,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#works">Works</a></li>
                 <li><a href="{{ url('/#contact') }}">Contact</a></li>-->
-                <li><a href="{{ url('/register') }}">Login</a></li>
+                <li><a href="{{ url('/index.php/login') }}">Login</a></li>
               </ul>
             </nav>
           </div>
