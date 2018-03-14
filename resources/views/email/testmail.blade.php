@@ -3,11 +3,11 @@
 	<title>Application Form</title>
 </head>
 <body>
-	<p>Dear Administrator,</p>
-	<p>New Application from {{$name}} wants to borrow {{ $amount }} for {{ $terms }} days.</p>
-	<p>Kindly login to your dashboard to review his/her documents.</p>
+	<p>Hi All,</p>
+	<p>We receive a new application from {{$name}}, who wants to borrow <b>{{ $amount }} PHP</b> for {{ $terms }} days.</p>
+	<p>Kindly login to our dashboard to review his/her documents.</p>
 	
 	<p>Regards,</p>
-	<p>Team Elite</p>
+	<p>Team FCP</p>
 </body>
 </html>
