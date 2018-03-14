@@ -2,13 +2,18 @@
 @section('content')  
     <div class="row">
       @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
+      @if (Session::has('status'))
+        <div class="alert alert-success">
+          <strong>Success!</strong> {!! session('status') !!}
+        </div>
       @endif
     </div>    
     <div class="row">
@@ -64,11 +69,6 @@
         <div class="col-md-6">
           <div class="wizard">
               <h4 class="text-center">Need Cash? Just follow the steps.</h4>
-              @if (Session::has('status'))
-                <div class="alert alert-success">
-                  <strong>Success!</strong> {!! session('status') !!}
-                </div>
-              @endif
               <div class="wizard-inner">
                 <div class="connecting-line"></div>
                   <ul class="nav nav-tabs" role="tablist">

@@ -82,7 +82,7 @@ class ClientController extends Controller
         $client->save();
         
         Mail::send('email.testmail',['name' => $request->input('fullname'),'amount' => $request->input('loanamount' ), 'terms' => $request->input('terms')], function ($message) {
-           $emails = ['karlo.largoza@gmail.com ', 'yvone_2989@yahoo.com ','angelomirandagarcia@gmail.com','dane.alain14@gmail.com'];
+           $emails = ['karlo.largoza@gmail.com','angelomirandagarcia@gmail.com','dane.alain14@gmail.com','yvone2989@gmail.com'];
 
            $message->from($emails, 'New Application - Fast Cash Pinoy');
 
