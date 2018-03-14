@@ -86,7 +86,7 @@ class ClientController extends Controller
 
            $message->from($emails, 'New Application - Fast Cash Pinoy');
 
-           $message->to('angelomirandagarcia@gmail.com')->subject('New Application');
+           $message->to($emails)->subject('New Application');
 
         });
         $request->session()->flash('status', 'Application has been sent!');   
