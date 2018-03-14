@@ -1,5 +1,16 @@
 @extends('layout.app')
-@section('content')      
+@section('content')  
+    <div class="row">
+      @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+    </div>    
     <div class="row">
         <div class="col-md-6">
             <div class="wizard">
@@ -57,16 +68,6 @@
                 <div class="alert alert-success">
                   <strong>Success!</strong> {!! session('status') !!}
                 </div>
-              @endif
-
-              @if ($errors->any())
-                  <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
               @endif
               <div class="wizard-inner">
                 <div class="connecting-line"></div>
@@ -128,8 +129,8 @@
                                 </select>
                               </div> 
                               <div class="form-group">
-                                <label class="radio-inline"><input type="radio" value="15" name="terms" checked="checked">15 Days</label>
-                                <label class="radio-inline"><input type="radio" value="30" name="terms">30 Days</label>
+                                <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif >15 Days</label>
+                                <label class="radio-inline"><input type="radio" value="30" name="terms"  @if ( old('terms')  === '30') {{ "checked='checked'"}} @endif >30 Days</label>
                               </div>
                               <hr/>     
                               <p><b>Estimated Amount: <span class="text-green" id="estimatedAmount">0.00 PHP</span></b></p>
@@ -147,7 +148,7 @@
                                 <input type="text" class="form-control" value="{!! old('fullname') !!}" name="fullname" placeholder="Full Name e.g (Juan Dela Cruz)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" name="mobileno"  placeholder="Cellphone Number e.g(0910xxxxxxx)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" value="{!! old('mobileno') !!}" name="mobileno"  placeholder="Cellphone Number e.g(0910xxxxxxx)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
                                 <input type="text" class="form-control"  value="{!! old('address') !!}" name="address"  placeholder="Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
