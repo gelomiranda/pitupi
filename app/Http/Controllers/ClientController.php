@@ -35,9 +35,13 @@ class ClientController extends Controller
             'mobileno' => 'required|numeric|min:11',
             'emailaddress' => 'required:email|unique:client,emailaddress',
             'loanamount' => 'required',
+            'p_address' => 'required',
+            'b_address' => 'required',
             'terms' => 'required|numeric',
             'id1' => 'required',
             'id2' => 'required',
+            'bank' => 'required',
+            'file' => 'max:10240',
             'payslipcoe' => 'required',
             'bankname' => 'required',
             'bankno' => 'required|numeric',
@@ -72,6 +76,9 @@ class ClientController extends Controller
         $client->emailaddress   = $request->input('emailaddress');
         $client->loanamount     = $request->input('loanamount');
         $client->terms          = $request->input('terms');
+        $client->p_address      = $request->input('p_address');
+        $client->b_address      = $request->input('b_address');
+        $client->bank           = $request->input('bank');
         $client->id1            = $location_id_1;
         $client->id2            = $location_id_2;
         $client->payslipcoe     = $location_id_3;

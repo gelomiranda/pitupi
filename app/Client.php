@@ -9,6 +9,7 @@ class Client extends Authenticatable
 {
     protected $fillable = ['fullname',
     					   'mobileno',
+                            'p_address',
     					   'updated_at'];
 
     protected $table = 'client';

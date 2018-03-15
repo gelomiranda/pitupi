@@ -124,12 +124,10 @@
                                   <option value="8000" @if ( old('loanamount')  === '8000') {{ "selected='selected' "}} @endif>8,000 PHP</option>
                                   <option value="9000" @if ( old('loanamount')  === '9000') {{ "selected='selected' "}} @endif>9,000 PHP</option>
                                   <option value="10000" @if ( old('loanamount')  === '10000') {{ "selected='selected' "}} @endif>10,000 PHP</option>
-                                  <option value="20000" @if ( old('loanamount')  === '20000') {{ "selected='selected' "}} @endif>20,000 PHP</option>
-                                  <option value="30000" @if ( old('loanamount')  === '30000') {{ "selected='selected' "}} @endif>30,000 PHP</option>
                                 </select>
                               </div> 
                               <div class="form-group">
-                                <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif >15 Days</label>
+                                <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif checked='checked'>15 Days</label>
                                 <label class="radio-inline"><input type="radio" value="30" name="terms"  @if ( old('terms')  === '30') {{ "checked='checked'"}} @endif >30 Days</label>
                               </div>
                               <hr/>     
@@ -151,13 +149,19 @@
                                 <input type="text" class="form-control" value="{!! old('mobileno') !!}" name="mobileno"  placeholder="Cellphone Number e.g(0910xxxxxxx)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control"  value="{!! old('address') !!}" name="address"  placeholder="Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control"  value="{!! old('p_address') !!}" name="p_address"  placeholder="Present Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control"  value="{!! old('b_address') !!}" name="b_address"  placeholder="Billing Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
                                 <input type="text" class="form-control" value="{!! old('emailaddress') !!}" name="emailaddress"  placeholder="Email Address e.g(juan@gmail.com)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('bankname') !!}" name="bankname"  placeholder="Bank Account Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <input type="text" class="form-control" value="{!! old('bank') !!}" name="bank"  placeholder="Bank Name e.g( Metrobank )" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                              </div>
+                              <div class="form-group">
+                                <input type="text" class="form-control" value="{!! old('bankname') !!}" name="bankname"  placeholder="Bank Account Name (This is required so we can transfer your money.)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                               </div>
                               <div class="form-group">
                                 <input type="text" class="form-control" value="{!! old('bankno') !!}" name="bankno" placeholder="Bank Account Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />

@@ -123,6 +123,11 @@ return [
         'bankname' => 'Bank Account Name',
         'bankno' => 'Bank Account Number',
         'emailaddress' => 'Email address',
+        'p_address' => 'Present address',
+        'b_address' => 'Billing address',
+        'id_2' => 'Government ID #2',
+        'id_1' => 'Government ID #1',
     ],
+
 
 ];
