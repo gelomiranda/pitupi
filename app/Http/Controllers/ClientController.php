@@ -43,7 +43,7 @@ class ClientController extends Controller
             'bank' => 'required',
             'payslipcoe' => 'required|max:10240',
             'letter' => 'required|max:10240',
-            'bankname' => 'required',
+            'billingstatement' => 'required|max:10240',
             'bankno' => 'required|numeric',
         ]);
 
