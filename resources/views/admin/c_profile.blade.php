@@ -77,6 +77,10 @@
              <div class="box-body">
                <table class="table table-bordered">
                  <tr>
+                   <th width="15%">Bank</th>
+                   <th>{{$client[0]->bank}}</th>
+                 </tr>
+                 <tr>
                    <th width="15%">Bank Account Name</th>
                    <th>{{$client[0]->bankname}}</th>
                  </tr>

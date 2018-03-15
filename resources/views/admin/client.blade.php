@@ -11,8 +11,9 @@
               <table class="table table-bordered">
                 <tr>
                   <th>Name</th>
+                  <th>Present Address</th>
+                  <th>Billing Address</th>
                   <th>Mobile Number</th>
-                  
                   <th>Loan Amount</th>
                   <th>Terms</th>
                   <th>Email Address</th>
@@ -23,6 +24,12 @@
                   <tr>
                     <td>
                         {{ $client->fullname }}
+                    </td>
+                    <td>
+                        {{ $client->p_address }}
+                    </td>
+                    <td>
+                        {{ $client->b_address }}
                     </td>
                     <td>
                         {{ $client->mobileno }}
