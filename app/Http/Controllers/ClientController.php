@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Client;
+use App\Transaction;
 use Input;
 use Illuminate\Http\Request;
 use View;
@@ -108,12 +109,36 @@ class ClientController extends Controller
         }); 
     }
 
+    
     private function do_upload($input,$location){
         
         $filename = $input->getClientOriginalName();
         $input->move(public_path('uploads'), $location);    
 
     }
+
+    /**
+     * Approved a newly created client.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function approved(Request $request)
+    {
+        Client::where('ID', $request->c_id)
+                     ->update(['approved_date'  => date('Y-m-d H:i:s'),
+                               'is_approved'    => 1,
+                               'due_date'       => $request->due_date]);
+
+
+        $transaction = new transaction;
+        $transaction->client_id = $request->c_id;
+        $transaction->amount = $request->amount;
+        $transaction->transaction_type  = 1;
+        $transaction->save();             
+
+    }
+
 
     /**
      * Store a newly created resource in storage.

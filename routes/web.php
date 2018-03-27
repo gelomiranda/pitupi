@@ -22,6 +22,8 @@ Route::get('/', function () {
 
 
 Route::post('client/create', 'ClientController@create');
+Route::post('client/approved', 'ClientController@approved');
+
 
 /*End client routest*/
 
@@ -83,7 +85,6 @@ Route::post('/application', 'UserController@application_save');
 Route::post('user/create', 'UserController@store');
 
 
-Route::get('user/wallet', 'UserController@wallet')->name('wallet');
 Route::get('/user/marketplace', 'UserController@marketplace')->name('marketplace');
 
 
@@ -129,5 +130,7 @@ Route::get('/admin/user/{id}', 'AdminController@show')->name('user');
 Route::post('/admin/approve_loan', 'AdminController@approve_loan')->name('approve_loan');
 Route::post('/admin/transfer', 'AdminController@transfer')->name('transfer');
 
+Route::get('/admin/wallet', 'AdminController@wallet')->name('wallet');
 
+Route::get('/admin/planner', 'AdminController@planner')->name('calendar');
 

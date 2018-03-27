@@ -20,84 +20,53 @@
               <!-- The timeline -->
                 <ul class="timeline timeline-inverse">
                   <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
+                  @php 
+                    $last_date = null;
+                  @endphp
+                  @foreach ($transactions as $transaction)
+                    @php 
+                     if ( $last_date !== date('F j, Y', strtotime($transaction->transaction_date)) )
+                     { 
+                        echo '<li class="time-label">
+                              <span class="bg-green">
+                                '.date('F j, Y', strtotime($transaction->transaction_date)).'
+                              </span>
+                        </li>';
+                        $lastid = $transaction->date;
+                     }
+                    @endphp
                   <li>
-                    <i class="fa fa-envelope bg-blue"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                      <h3 class="timeline-header"><a href="#">Support Team</a> verify your file .</h3>
-
-                      <div class="timeline-body">
-                        Verify transaction receipt.
+                    @if($transaction->transaction_type == 1)
+                      <i class="fa fa-money bg-yellow"></i>
+                      <div class="timeline-item">
+                        <h3 class="timeline-header"><a href="#">You</a> invested {{ number_format($transaction->amount,2) }} to <a href="#">{{ $transaction->fullname }}</a></h3>
+                          <div class="timeline-body">
+                          Verify transaction receipt.
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-user bg-aqua"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                      <h3 class="timeline-header no-border"><a href="#">Administrator</a> debited 5,000,000 to your account.
-                      </h3>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-money bg-yellow"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                      <h3 class="timeline-header"><a href="#">You</a> invested 100,000 to loan #123456</h3>
-
-                      <div class="timeline-body">
-                        <p>Previous balance : 5,000,0000</p>
-                        <p>Balance after invesment : 4,900,000</p>
+                    @endif
+                    @if($transaction->transaction_type == 2)
+                      <i class="fa fa-money bg-green"></i>
+                      <div class="timeline-item">
+                        <h3 class="timeline-header no-border"><a href="#">{{ $transaction->fullname }}</a> debited {{ $transaction->amount }} to your account.</h3>
+                        <div class="timeline-body">
+                          No receipt available.
+                        </div>
                       </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                    @endif
+                    @if($transaction->transaction_type == 3)
+                      <i class="fa fa-envelope bg-blue"></i>
+                      <div class="timeline-item">
+                        <h3 class="timeline-header no-border"><a href="#">Administrator</a> debited <b> {{ number_format($transaction->amount,2) }} </b> to your account.</h3>
+                        <div class="timeline-body">
+                          No receipt available.
+                        </div>
                       </div>
-                    </div>
+                    @endif
+                    
                   </li>
+                  @endforeach
                   <!-- END timeline item -->
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                      <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <li>
-                    <i class="fa fa-clock-o bg-gray"></i>
-                  </li>
                 </ul>
             </div>
           </div>

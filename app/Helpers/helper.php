@@ -46,11 +46,12 @@ class Helper {
 	}
 
 	public static function get_balance($id){
-		$balance = DB::table('transaction')->select( DB::raw('SUM(amount) as amount') )
-		                        ->where(['user_id' => $id, 
-		                                 'transaction_type' => 0])
-		                        ->groupBy('transaction_type')->get();
+		// $balance = DB::table('transaction')->select( DB::raw('SUM(amount) as amount') )
+		//                         ->where(['user_id' => $id, 
+		//                                  'transaction_type' => 0])
+		//                         ->groupBy('transaction_type')->get();
 
+		$balance = DB::select('SELECT SUM(amount) - (SELECT SUM(amount) from transaction WHERE transaction_type != 3) as amount from transaction where transaction_type = 3');
 		if (count($balance)){
 		 	return $balance[0]->amount; 
 		}

@@ -26,6 +26,8 @@
   
 
   <link rel="stylesheet" href="{{ URL::asset('bootstrap/css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,6 +37,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- jQuery 2.2.3 -->
+  
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="{{ URL::asset('js/plugins/canvas-to-blob.min.js')}}" type="text/javascript"></script>
   <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
@@ -64,10 +67,15 @@
   <script src="{{ URL::asset('plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
   <!-- ChartJS 1.0.1 -->
   <script src="{{ URL::asset('plugins/chartjs/Chart.min.js')}}"></script>
+
+    
   <!-- AdminLTE for demo purposes -->
   <script src="{{ URL::asset('dist/js/demo.js')}}"></script>
   <script src="{{ URL::asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{ URL::asset('plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -162,6 +170,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{URL::to('admin/clients')}}"><i class="fa fa-user"></i> Client Profile</a></li>
+            <li><a href="{{URL::to('admin/wallet')}}"><i class="fa fa-credit-card"></i> Wallet Manager</a></li>
+            <li><a href="{{URL::to('admin/planner')}}"><i class="fa fa-calendar"></i> Planner</a></li>
           </ul>
           <!--<ul class="treeview-menu">
             <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user"></i> Lender Profile</a></li>

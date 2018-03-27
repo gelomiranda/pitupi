@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
     ],
 
@@ -230,6 +231,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Input' => Illuminate\Support\Facades\Input::class,
         'Custom' => App\Helpers\Custom::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 

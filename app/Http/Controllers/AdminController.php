@@ -12,6 +12,7 @@ use Auth;
 use App\Transaction;
 use Carbon\Carbon;
 use DB;
+use Calendar;
 
 class AdminController extends Controller
 {
@@ -159,5 +160,46 @@ class AdminController extends Controller
         $transaction->transaction_type  = $transaction_type;
         $transaction->approved_date = $approved_date;
         $transaction->save();
+    }
+
+    public function wallet(){
+        if (Auth::check()) {
+            $transactions = Transaction::leftjoin('client','transaction.client_id','=','client.ID')->get();
+            return view('be.wallet',['transactions' => $transactions]);
+        }else{
+            return redirect('login');
+        }
+
+    }
+
+    public function planner(){
+       $events = [];
+
+       $data = Client::all();
+
+       if($data->count()){
+
+          foreach ($data as $key => $value) {
+
+            $events[] = Calendar::event(
+
+                $value->fullname.' - '.$value->loanamount,
+
+                true,
+
+                new \DateTime($value->due_date),
+
+                new \DateTime($value->due_date.' +1 day')
+
+            );
+
+          }
+
+       }
+
+      $calendar = Calendar::addEvents($events); 
+
+      return view('admin.planner', compact('calendar'));
+
     }
 }
