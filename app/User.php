@@ -7,24 +7,43 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
-    protected $fillable = ['first_name',
-    					   'middle_name',
-    					   'last_name',
-						   'email_address',
-    					   'created_at',
-    					   'confirmation_code',
-    					   'confirmation_expired', 
+    protected $fillable = ['user_email',
+    					   'user_password',
+    					   'user_type',
+                           'user_link_validation',
     					   'updated_at'];
 
     protected $table = 'user';
-
+    
+    protected $primaryKey = 'user_id';
     public function getId()
     {
-      return $this->id;
+      return $this->user_id;
     }
 
     public function isAdmin()
     {
-        return $this->isAdmin; 
+        if($this->user_type == 1){
+            return true;
+        }
     }
+
+
+    public function isBorrower()
+    {
+        if($this->user_type == 2){
+            return true;
+        }
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->user_password;
+    }
+
 }

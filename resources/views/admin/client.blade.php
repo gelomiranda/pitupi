@@ -78,9 +78,14 @@
                       </a> 
                       |
                       @if( $client->due_date == "") 
-                      <a target="_blank" data-toggle="modal" class="my_modal" data-id="{{$client->ID}}" data-name='{{ $client->fullname }}' data-amount='{{ $client->loanamount }}' data-target="#myModal">
+                      <a target="_blank" data-toggle="modal" class="my_modal" data-type="approval" data-id="{{$client->ID}}" data-name='{{ $client->fullname }}' data-amount='{{ $client->loanamount }}' data-target="#myModal">
                         <i class="glyphicon glyphicon-ok"></i>
                       </a>
+                      @endif
+                      @if( $client->due_date != "" && $client->is_approved == 1 && $client->is_paid == 0 ) 
+                        <a target="_blank" data-toggle="modal" class="my_modal" data-type="payment" data-id="{{$client->ID}}" data-name='{{ $client->fullname }}' data-amount='{{ $client->loanamount }}' data-target="#myModal">
+                          <i class="glyphicon glyphicon-check"></i>
+                        </a>
                       @endif
                     </td>
                 </tr>
@@ -103,8 +108,9 @@
                 <h6 id='client_name'></h6>
                   <div class="form-group">
                     <input type="hidden" id="c_id">
-                    <label>Payment Due Date:</label>
-                    <input type="text" id="due_date" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control" value="" name="duedate" required="required" placeholder="Select payment due date"  />
+                    <input type="hidden" id="c_type">
+                    <label>Process Date:</label>
+                    <input type="text" id="due_date" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control" value="" name="duedate" required="required" placeholder="Select process due date"  />
                   </div>
                   <div class="form-group">
                     <label>Total Amount:</label>
@@ -113,7 +119,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-success" >Approved</button>
+                  <button type="submit" class="btn btn-success" >Save</button>
                 </div>
               </form>
             </div>
@@ -133,21 +139,30 @@
             '_token' : $('meta[name="csrf-token"]').attr('content'),
             'c_id'   : $('#c_id').val(),
             'due_date' : $('#due_date').val(),
-            'amount' : $('#amount').val()
+            'amount' : $('#amount').val(),
+            'c_type' : $('#c_type').val()
           }
         ).done(function(msg){
           //Remove the danger class and add success class to highlight the row that is approved
           $("table.data").find("tr#"+$('#c_id').val()).removeClass("danger").addClass("success");
-          alert("Approved!");
+          alert("Transaction saved!");
           
         }).error(function(msg){
-        
+          alert(msg);
         });
         return false;
       });
 
 
       $('.my_modal').click(function(){
+        if($(this).data('type') == 'approval'){
+          $('.modal-title').text('Client Approval');
+          $('#c_type').val(1);
+        }else{
+          $('.modal-title').text('Client Payment');
+          $('#c_type').val(2);
+        }
+
         $('#c_id').val($(this).data('id'));
         $('#client_name').html('Client name: ' + $(this).data('name'));
         $('#amount').val($(this).data('amount'));

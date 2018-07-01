@@ -33,9 +33,6 @@ Route::get('logout', function () {
     return view('fe/landing_fcp');
 });
 
-// Route::get('/register', function () {
-//     return view('fe/register');
-// });
 
 Route::get('/register', 'UserController@register');
 
@@ -64,11 +61,24 @@ Route::get('/application-status', function () {
 
 /*User Functions*/
 
+Route::get('/register', 'UserController@register')->name('register');
+Route::post('/register', 'UserController@register_user');
+Route::get('register/verify/{confirmationCode}','UserController@registration_verification');
+
+
 Route::get('/login', 'UserController@login')->name('login');
 Route::post('/login', 'UserController@verify_login');
 
-Route::get('/profile', 'UserController@profile')->name('profile');
-Route::post('/profile', 'UserController@update');
+Route::get('/profile', 'ProfileController@user')->name('profile');
+Route::post('/profile', 'ProfileController@update');
+
+Route::get('/document', 'DocumentController@index')->name('document');
+
+Route::post('/document', 'DocumentController@create')->name('document');
+
+Route::get('/loan', 'LoanController@create')->name('loan');
+Route::post('/loan', 'LoanController@store')->name('loan');
+
 
 
 Route::get('/documents', 'UserController@documents')->name('documents');

@@ -127,6 +127,7 @@ return [
         'b_address' => 'Billing address',
         'id_2' => 'Government ID #2',
         'id_1' => 'Government ID #1',
+        'c_password' => 'confirm password',
     ],
 
 

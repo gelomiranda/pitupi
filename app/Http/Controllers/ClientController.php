@@ -125,17 +125,42 @@ class ClientController extends Controller
      */
     public function approved(Request $request)
     {
-        Client::where('ID', $request->c_id)
-                     ->update(['approved_date'  => date('Y-m-d H:i:s'),
-                               'is_approved'    => 1,
-                               'due_date'       => $request->due_date]);
+        // if($request->c_type == 1)
+        // {
+        //     Client::where('ID', $request->c_id)
+        //              ->update(['approved_date'  => date('Y-m-d H:i:s'),
+        //                        'is_approved'    => 1,
+        //                        'due_date'       => $request->due_date]);
+        // }
 
+        // if($request->c_type == 2)
+        // {
+        //     Client::where('ID', $request->c_id)
+        //              ->update(['is_paid' => 1]);
+        // }
 
         $transaction = new transaction;
+
         $transaction->client_id = $request->c_id;
         $transaction->amount = $request->amount;
-        $transaction->transaction_type  = 1;
+        $transaction->transaction_date = $request->due_date;
+        
+
+        if($request->c_type == 1)
+        {
+            $transaction->transaction_type  = 1;
+        }
+
+        if($request->c_type == 2)
+        {
+            $transaction->transaction_type  = 2;
+        }
+
+        
+
         $transaction->save();             
+
+
 
     }
 

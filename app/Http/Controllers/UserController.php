@@ -13,7 +13,7 @@ use Auth;
 use Validator;
 use Redirect;
 use Helper;
-
+use Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,7 +27,7 @@ class UserController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth'], ['only' => ['profile',]]);
+        //$this->middleware(['auth'], ['only' => ['profile',]]);
     }
 
     public function index()
@@ -103,31 +103,6 @@ class UserController extends Controller
     public function show(User $user)
     {
        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function profile(User $user)
-    {   
-        $user = User::where('id', Auth::id())
-               ->get();
-
-        $documents = Document::where(['user_id' => Auth::id(),
-                                      'type' => 0])->get();
-        
-        if(count($user)){
-            $view =  view('be.borrower-dashboard',['user' => $user[0],
-                                                   'documents' => $documents,
-                                                   'document_type' => '0']);
-        }else{
-            $view = view('be.borrower-dashboard');
-        } 
-
-        return $view;
     }
 
 
@@ -229,8 +204,65 @@ class UserController extends Controller
 
     public function register()
     {
-      $loans = Loan::get();
-      return view('fe.register', array('loans' => $loans)); 
+      return view('fe.register'); 
+    }
+
+    public function register_user()
+    {
+      $rules = array(
+          'email_address'    => 'required|email', // make sure the email is an actual email
+          'password' => 'required|min:8|same:c_password' // password can only be alphanumeric and has to be greater than 3 characters
+      );
+
+      $confirmation_code = str_random(30);
+
+      $userdata = array(
+        'email_address'     => Input::get('email_address'),
+        'password'          => Input::get('password'),
+        'is_verified'       => '1',
+        'user_type'         => '2'
+      );
+
+      $validator = Validator::make(Input::all(), $rules);
+
+      // if the validator fails, redirect back to the form
+      if ($validator->fails()) {
+          return Redirect::to('register')
+              ->withErrors($validator) // send back all errors to the login form
+              ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+      }else{
+        $user = User::where('user_email', '=', Input::get('email_address'))->get();
+        if (count($user) > 0) {
+          return Redirect::to('register')->with('status', 'Email Address already in use!');;
+        }else{
+          $user = User::create(['user_email'             => Input::get('email_address'),
+                              'user_password'         => bcrypt(Input::get('password')),
+                              'user_link_validation'  => $confirmation_code]);
+          Mail::send('email.confirmation',['confirmation_code' => $confirmation_code], function ($message) {
+            $message->from(Input::get('email_address'), 'Password Confirmation - Fast Cash Pinoy');
+            $message->to(Input::get('email_address'))->subject('Password Confirmation - Fast Cash Pinoy');
+          });
+        } 
+        
+      }
+    }
+
+    public function registration_verification($confirmation_code)
+    {
+      $user = User::where('user_link_validation', '=', $confirmation_code)->get();
+      if(count($user) != 0){
+        $user = $user->first();
+        if($user->user_is_validated != 1){
+
+          $now = $now = new \DateTime();
+          User::where('user_link_validation', '=', $confirmation_code)
+            ->update(['user_is_validated'  => 1,
+                      'user_is_validated_at' => $now]);
+        }else{
+          return view('fe.message')->withMessage('This user was already validated.');
+        }
+      }
+     
     }
 
 
@@ -243,15 +275,16 @@ class UserController extends Controller
     {
 
       $rules = array(
-          'email_address'    => 'required|email', // make sure the email is an actual email
-          'password' => 'required|min:5' // password can only be alphanumeric and has to be greater than 3 characters
+          'user_email'    => 'required|email', // make sure the email is an actual email
+          'user_password' => 'required|min:8' // password can only be alphanumeric and has to be greater than 3 characters
       );
 
-
+      $hashed = Hash::make( Input::get('user_password'));
+          
       $userdata = array(
-        'email_address'     => Input::get('email_address'),
-        'password'          => Input::get('password'),
-        'is_verified'         => '1'
+        'user_email'             => Input::get('user_email'),
+        'user_password'          =>  Input::get('user_password'),
+        'user_is_validated'      => '1'
       );
 
       // run the validation rules on the inputs from the form
@@ -261,7 +294,7 @@ class UserController extends Controller
       if ($validator->fails()) {
           return Redirect::to('login')
               ->withErrors($validator) // send back all errors to the login form
-              ->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+              ->withInput(Input::except('user_password')); // send back the input (not the password) so that we can repopulate the form
       }else{ 
         if (Auth::attempt($userdata)) {
           if( Auth::user()->isAdmin() ){
@@ -269,7 +302,7 @@ class UserController extends Controller
           }
           return redirect('profile');
         } else {        
-          return Redirect::to('login')->with('status', 'Invalid Credentials!');;
+          return Redirect::to('login')->with('status', 'Invalid Credentials!');
         } 
       }
 

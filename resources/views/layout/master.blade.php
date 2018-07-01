@@ -129,6 +129,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{URL::to('profile')}}"><i class="fa fa-user"></i> My Profile</a></li>
+            <li><a href="{{URL::to('document')}}"><i class="fa fa-book"></i> My Documents</a></li>
             <!--<li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> My Documents</a></li>-->
           </ul>
         </li>
@@ -140,7 +141,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{URL::to('application')}}"><i class="fa fa-file-text"></i> Loan Application</a></li>
+            <li><a href="{{URL::to('loan')}}"><i class="fa fa-file-text"></i> Loan Application</a></li>
             <li><a href="{{URL::to('borrower/book')}}"><i class="fa fa-book"></i> Loan Book</a></li>
             <li><a href="{{URL::to('borrower/credit_questionnaire')}}"><i class="fa fa-question-circle"></i> Credit Profile Questionaire</a></li>
             <li><a href="{{URL::to('pdf/load')}}"><i class="fa fa-credit-card"></i> Payment for Year</a></li>

@@ -135,6 +135,7 @@
                             </div>
                           </div>
                           <ul class="list-inline pull-right">
+                              <li><button type="button" class="btn btn-success btn-info-full ">Re-Apply for loan</button></li>
                               <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                           </ul>
                       </div>
@@ -169,7 +170,7 @@
                             </div>
                           </div>
                           <ul class="list-inline pull-right">
-                              <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                              <li><button type="button" data-toggle="modal" class="modal" class="btn btn-default prev-step">Previous</button></li>
                               <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                           </ul>
                       </div>
@@ -239,6 +240,38 @@
               </form>
             </div>
           </div>
+          <!-- Modal -->
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Client Approval</h4>
+                </div>
+                <form method="post" class="approved">
+                  <div class="modal-body">
+                  <h6 id='client_name'></h6>
+                    <div class="form-group">
+                      <input type="hidden" id="c_id">
+                      <input type="hidden" id="c_type">
+                      <label>Process Date:</label>
+                      <input type="text" id="due_date" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control" value="" name="duedate" required="required" placeholder="Select process due date"  />
+                    </div>
+                    <div class="form-group">
+                      <label>Total Amount:</label>
+                      <input type="text" id="amount" class="form-control" value="" name="amount" required="required"  />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" >Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!--end modal-->
       </div>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
