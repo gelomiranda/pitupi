@@ -77,9 +77,9 @@
                 <div class="form-group">
                   <select class="form-control" id="amount" name="loanamount">
                     <option value="">Select Loan Amount</option>
-                    <option value="1000">1,000 PHP</option>
-                    <option value="2000">2,000 PHP</option>
                     <option value="3000">3,000 PHP</option>
+                    <option value="4000">4,000 PHP</option>
+                    <option value="5000">5,000 PHP</option>
                   </select>
                 </div> 
                 <div class="form-group">
