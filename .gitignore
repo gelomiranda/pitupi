@@ -1,5 +1,7 @@
 /node_modules
 /public/hot
+/public/uploads
+/public/avatar/uploads
 /public/storage
 /storage/*.key
 /vendor
@@ -10,5 +12,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-*png
-*jpg
