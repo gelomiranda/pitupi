@@ -129,11 +129,24 @@ Route::get('/borrower/credit_questionnaire', 'BorrowerController@credit_question
 
 /*Admin Route*/
 Route::get('/admin', 'AdminController@index')->name('admin');
-Route::get('/admin/users', 'AdminController@users')->name('users');
+Route::get('/admin/users', 'UserController@show')->name('users');
+Route::get('/admin/loans', 'LoanController@show')->name('loans');
+Route::get('/admin/loan/{id}', 'LoanController@detail')->name('loan_detail');
+Route::get('loan/list', 'LoanController@list')->name('loan_list');
+
+Route::post('/admin/loan/status', 'LoanController@status')->name('loan_status');
+
+Route::get('/admin/transaction', 'TransactionController@index')->name('transaction');
+Route::get('/admin/transactions', 'TransactionController@show')->name('transaction');
+Route::post('/admin/transaction', 'TransactionController@store')->name('transaction');
+
+
+
 
 Route::get('/admin/clients', 'AdminController@clients')->name('clients');
 
-Route::get('/admin/client/{id}', 'AdminController@show')->name('client');
+Route::get('/admin/user/profile/{id}', 'ProfileController@show')->name('user_profile');
+Route::post('/admin/user/approve', 'UserController@approve')->name('user_approve');
 
 Route::get('/admin/user/{id}', 'AdminController@show')->name('user');
 

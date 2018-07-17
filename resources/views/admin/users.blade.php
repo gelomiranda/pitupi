@@ -12,43 +12,33 @@
                 <tr>
                   <th>Name</th>
                   <th>Email Address</th>
-                  <th>Age</th>
-                  <th>Gender</th>
+                  <th>Address</th>
                   <th>Date Applied</th>
                   <th style="width: 10px" class="text-center">Status</th>
-                  <th style="width: 10px" class="text-center">Action</th>
                 </tr>
                 @foreach ($users as $user)
                   <tr>
                     <td>
-                        {{ $user->first_name }}
+                       <a target="_blank" href="{{URL::to('admin/user/profile/'.$user->user_id)}}">{{ $user->profile_fullname}}</a>
                     </td>
                     <td>
-                        {{ $user->email_address }}
+                      {{ $user->user_email }}
                     </td>
                     <td>
-                        @if($user->gender == 0)
-                        {{ 'Male' }}
-                        @else
-                        {{ 'Female' }}
-                        @endif
+                      {{ $user->profile_address }}
                     </td>
                     <td>
-                        {{ $user->email_address }}
-                    </td>
-                    
-                    <td>
-                        {{ $user->created_at }}
+                        {{ date( 'M-d-Y g:ia', strtotime($user->created_at)) }}
                     </td>
                     <td>
+                      @if( $user->user_is_validated == 1)
+                      <span class="badge bg-green">Approved</span>
+                      @else
                       <span class="badge bg-red">For Approval</span>
-                    </td>
-                    <td>
-                      <a target="_blank" href="{{URL::to('admin/user/'.$user->id)}}"><button>View Profile</button></a> 
+                      @endif
                     </td>
                 </tr>
                 @endforeach
-                
               </table>
             </div>
         </div>

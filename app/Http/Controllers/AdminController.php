@@ -175,21 +175,24 @@ class AdminController extends Controller
     public function planner(){
        $events = [];
 
-       $data = Client::all();
-
+       $data = DB::table('loan')
+                  ->join('profile', 'profile.user_id', '=', 'loan.user_id')
+                  ->join('transaction', 'loan.loan_id', '=', 'transaction.loan_id')
+                  ->where('loan_status','=',3)                    
+                  ->get();
        if($data->count()){
 
           foreach ($data as $key => $value) {
 
             $events[] = Calendar::event(
 
-                $value->fullname.' - '.$value->loanamount,
+                $value->profile_fullname.' - '.$value->loan_amount,
 
                 true,
 
-                new \DateTime($value->due_date),
+                new \DateTime(date('Y-m-d', strtotime($value->transaction_date . " + ".( $value->loan_terms + 1) ." day"))),
 
-                new \DateTime($value->due_date.' +1 day')
+                new \DateTime($value->transaction_date)
 
             );
 

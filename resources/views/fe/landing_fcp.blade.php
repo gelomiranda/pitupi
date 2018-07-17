@@ -59,7 +59,7 @@
               <hr/>
               <div class="row">
                 <div class="col-md-12 col-xs-12">
-                  <p class="text-justify"><b>Fixed</b> interest is given at <b>5%</b> for <b>15-days</b> loan period and <b>10%</b> for <b>30-days</b> loan duration.</p>
+                  <p class="text-justify"><b>Fixed</b> interest is given at <b>15%</b> for <b>15-days</b> loan period and <b>20%</b> for <b>30-days</b> loan duration.</p>
                   <p class="text-justify"><b>Estimated amount</b> reflects the total payable including interest, taxes and admin fees.</p>
                   <p class="text-justify"><b>Recommended income</b> is a projected debtor monthly income to avail the loan amount selected. </p>
                 </div>
@@ -67,211 +67,49 @@
             </div>
         </div>
         <div class="col-md-6">
-          <div class="wizard">
-              <h4 class="text-center">Need Cash? Just follow the steps.</h4>
-              <div class="wizard-inner">
-                <div class="connecting-line"></div>
-                  <ul class="nav nav-tabs" role="tablist">
-                      <li role="presentation" class="active">
-                          <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
-                              <span class="round-tab">
-                                  1
-                              </span>
-                          </a>
-                      </li>
-                      <li role="presentation" class="disabled">
-                          <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
-                              <span class="round-tab">
-                                  2
-                              </span>
-                          </a>
-                      </li>
-                      <li role="presentation" class="disabled">
-                          <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
-                              <span class="round-tab">
-                                  3
-                              </span>
-                          </a>
-                      </li>
-                      <li role="presentation" class="disabled">
-                          <a href="#complete" class="disabled" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                              <span class="round-tab">
-                                  4
-                              </span>
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-              {{ Form::open(array('url' => 'index.php/client/create', 'method' => 'post' , 'enctype'=>'multipart/form-data')) }}
-                  <div class="tab-content">
-                      <div class="tab-pane active" role="tabpanel" id="step1">
-                          <h3>Loan Amount</h3>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <p>Exclusively available to employees of accredited companies.</p>
-                              <p>Borrow between <span class="label label-primary">1,000</span> - <span class="label label-primary">10,000</span> </p>
-                              <p>As low as 5 - 10 % interest per month</p>
-                              <div class="form-group">
-                                <select class="form-control" id="amount" name="loanamount">
-                                  <option value="">Select Loan Amount</option>
-                                  <option value="1000" @if ( old('loanamount')  === '1000') {{ "selected='selected' "}} @endif>1,000 PHP</option>
-                                  <option value="2000" @if ( old('loanamount')  === '2000') {{ "selected='selected' "}} @endif>2,000 PHP</option>
-                                  <option value="3000" @if ( old('loanamount')  === '3000') {{ "selected='selected' "}} @endif> 3,000 PHP</option>
-                                  <option value="4000" @if ( old('loanamount')  === '4000') {{ "selected='selected' "}} @endif>4,000 PHP</option>
-                                  <option value="5000" @if ( old('loanamount')  === '5000') {{ "selected='selected' "}} @endif>5,000 PHP</option>
-                                  <option value="6000" @if ( old('loanamount')  === '6000') {{ "selected='selected' "}} @endif>6,000 PHP</option>
-                                  <option value="7000" @if ( old('loanamount')  === '7000') {{ "selected='selected' "}} @endif>7,000 PHP</option>
-                                  <option value="8000" @if ( old('loanamount')  === '8000') {{ "selected='selected' "}} @endif>8,000 PHP</option>
-                                  <option value="9000" @if ( old('loanamount')  === '9000') {{ "selected='selected' "}} @endif>9,000 PHP</option>
-                                  <option value="10000" @if ( old('loanamount')  === '10000') {{ "selected='selected' "}} @endif>10,000 PHP</option>
-                                </select>
-                              </div> 
-                              <div class="form-group">
-                                <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif checked='checked'>15 Days</label>
-                                <label class="radio-inline"><input type="radio" value="30" name="terms"  @if ( old('terms')  === '30') {{ "checked='checked'"}} @endif >30 Days</label>
-                              </div>
-                              <hr/>     
-                              <p><b>Estimated Amount: <span class="text-green" id="estimatedAmount">0.00 PHP</span></b></p>
-                            </div>
-                          </div>
-                          <ul class="list-inline pull-right">
-                              <li><button type="button" class="btn btn-success btn-info-full ">Re-Apply for loan</button></li>
-                              <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
-                          </ul>
-                      </div>
-                      <div class="tab-pane" role="tabpanel" id="step2">
-                          <h3>Personal Information</h3>
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('fullname') !!}" name="fullname" placeholder="Full Name e.g (Juan Dela Cruz)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('mobileno') !!}" name="mobileno"  placeholder="Cellphone Number e.g(0910xxxxxxx)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control"  value="{!! old('p_address') !!}" name="p_address"  placeholder="Present Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control"  value="{!! old('b_address') !!}" name="b_address"  placeholder="Billing Address" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('emailaddress') !!}" name="emailaddress"  placeholder="Email Address e.g(juan@gmail.com)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('bank') !!}" name="bank"  placeholder="Bank Name e.g( Metrobank )" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('bankname') !!}" name="bankname"  placeholder="Bank Account Name (This is required so we can transfer your money.)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" value="{!! old('bankno') !!}" name="bankno" placeholder="Bank Account Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                            </div>
-                          </div>
-                          <ul class="list-inline pull-right">
-                              <li><button type="button" data-toggle="modal" class="modal" class="btn btn-default prev-step">Previous</button></li>
-                              <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                          </ul>
-                      </div>
-                      <div class="tab-pane" role="tabpanel" id="step3">
-                          <h3>Requirements</h3>
-                          <div class="row">
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="control-label">Goverment ID #1</label>
-                                <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="id1"  class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
-                              </div>
-
-                              <div class="form-group">
-                                <label class="control-label">Goverment ID #2</label>
-                                <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="id2"  class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
-                              </div>
-
-                              <div class="form-group">
-                                <label class="control-label">Billing Statement</label>
-                                <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="billingstatement" class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Payslip/COE</label>
-                                <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="payslipcoe" class="file-loading" required="required" type="file" data-show-preview="false" accept="image/*" />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label class="control-label clearfix">Letter of Undertaking</label>
-                                <br>
-                                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">View Format</button>
-                                <div id="demo" class="collapse">
-                                  <small class="text-justify">Copy the format content using your handwriting in a sheet of paper.Fill out the necessary details then place your full name and signature at the bottom. Then upload the file.</small>
-                                  <p>I,(Name) at legal age with residence address of (Address) will borrow an amount of cash worth (Amount) pesos with a (Interest) % for 1 month from FastCashPinoy.</p>
-                                  <p>I promise to pay via BPI account deposit on (Date). Failure to pay on the said date will result of penalty of 1% per day starting (Date).</p>
-                                </div>
-                                <div id="errorBlock" class="help-block"></div>
-                                <input id="input-folder-2" name="letter" class="file-loading" type="file" data-show-preview="false" accept="image/*" >
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label">Referred By</label>
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Full Name e.g (Juan Dela Cruz)" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" name="email_address" required="required" placeholder="Area + Phone Number" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <ul class="list-inline pull-right">
-                              <li><button type="submit" class="btn btn-primary">Submit</button></li>
-                          </ul>
-                      </div>
-                      
-                      <div class="tab-pane" role="tabpanel" id="complete">
-                          <h3>Complete</h3>
-                          <p>Please wait for our loan officer to contact you for validation. 
-                             Keep your line open.
-                          </p>
-                      </div>
-                      <div class="clearfix"></div>
-                  </div>
-              </form>
-            </div>
-          </div>
-          <!-- Modal -->
-          <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-            <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Client Approval</h4>
+          <div class="box">
+            <h3 class="text-center">Loan Calculator</h3>
+            <div class="row">
+              <div class="col-md-12">
+                <p>Exclusively available to employees of accredited companies.</p>
+                <p>Borrow between <span class="label label-primary">3,000</span> - <span class="label label-primary">5,000</span> </p>
+                <p>As low as 15 - 20 % interest per month</p>
+                <div class="form-group">
+                  <select class="form-control" id="amount" name="loanamount">
+                    <option value="">Select Loan Amount</option>
+                    <option value="1000">1,000 PHP</option>
+                    <option value="2000">2,000 PHP</option>
+                    <option value="3000">3,000 PHP</option>
+                  </select>
+                </div> 
+                <div class="form-group">
+                  <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif checked='checked'>15 Days</label>
+                  <label class="radio-inline"><input type="radio" value="30" name="terms"  @if ( old('terms')  === '30') {{ "checked='checked'"}} @endif >30 Days</label>
                 </div>
-                <form method="post" class="approved">
-                  <div class="modal-body">
-                  <h6 id='client_name'></h6>
-                    <div class="form-group">
-                      <input type="hidden" id="c_id">
-                      <input type="hidden" id="c_type">
-                      <label>Process Date:</label>
-                      <input type="text" id="due_date" data-provide="datepicker" data-date-format="yyyy-mm-dd" class="form-control" value="" name="duedate" required="required" placeholder="Select process due date"  />
-                    </div>
-                    <div class="form-group">
-                      <label>Total Amount:</label>
-                      <input type="text" id="amount" class="form-control" value="" name="amount" required="required"  />
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" >Save</button>
-                  </div>
-                </form>
+                <hr/>     
+                <p><b>Repayment Amount: <span class="text-green" id="estimatedAmount">0.00 PHP</span></b></p>
               </div>
             </div>
           </div>
-          <!--end modal-->
+          <div class="row">
+            <div class="col-md-8 col-xs-10 col-md-offset-2">
+              <h6 class="text-center">You can pay us on the following.</h6>
+                <div class="row">
+                  <div class="col-md-4 col-xs-4">
+                     <img src="{{ URL::asset('img/GCash.jpg') }}" class="img-responsive img-circle" style="width: auto; height: 100px;">
+                  </div>
+
+                  <div class="col-md-4 col-xs-4">
+                     <img src="{{ URL::asset('img/BPI.jpg') }}" class="img-responsive img-circle" style="width: auto; height: 100px;">
+                  </div>
+
+                  <div class="col-md-4 col-xs-4">
+                    <img src="{{ URL::asset('img/Smart.png') }}" class="img-responsive img-circle" style="width: auto; height: 100px;">
+                  </div>
+                </div>
+            </div>
+          </div>  
+        </div>
       </div>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">
@@ -322,7 +160,7 @@
         myamount = amount;
         totalAmount = 0;
         if( day == 30 ){
-         totalAmount = (amount * 0.1) + Number(myamount) + 200;
+         totalAmount = (amount * 0.2) + Number(myamount) + 200;
         }else{
          totalAmount = (amount * 0.05) + Number(myamount) + 200;
         }

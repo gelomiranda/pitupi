@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Test</title>
+  <title>FCP Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -77,7 +77,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
@@ -87,7 +87,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Dashboard</span>
+      <span class="logo-lg"><b>Dashboard</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -164,16 +164,27 @@
         @if(Auth::user()->isAdmin())
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Lender</span>
+            <i class="fa fa-dashboard"></i> <span>Client</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{URL::to('admin/clients')}}"><i class="fa fa-user"></i> Client Profile</a></li>
-            <li><a href="{{URL::to('admin/wallet')}}"><i class="fa fa-credit-card"></i> Wallet Manager</a></li>
+            <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a href="{{URL::to('admin/loans')}}"><i class="fa fa-money"></i> Loan</a></li>
             <li><a href="{{URL::to('admin/planner')}}"><i class="fa fa-calendar"></i> Planner</a></li>
           </ul>
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Transaction</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{URL::to('admin/transaction')}}"><i class="fa fa-exchange"></i>Create Transaction</a></li>
+            <li><a href="{{URL::to('admin/transactions')}}"><i class="fa fa-ellipsis-h"></i>Transaction History</a></li>
+          </ul>
+          
           <!--<ul class="treeview-menu">
             <li><a href="{{URL::to('admin/users')}}"><i class="fa fa-user"></i> Lender Profile</a></li>
             <li><a href="{{URL::to('documents')}}"><i class="fa fa-file"></i> Lender Documents</a></li>

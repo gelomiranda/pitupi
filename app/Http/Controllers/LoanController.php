@@ -12,6 +12,7 @@ use App\Profile;
 use App\Document;
 use App\User;
 use Mail;
+use DB;
 
 class LoanController extends Controller
 {
@@ -48,6 +49,7 @@ class LoanController extends Controller
         $rules = array(
             'amount' => 'required|numeric',
             'terms' => 'required|numeric',
+            'reason' => 'required:max:250'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -82,6 +84,7 @@ class LoanController extends Controller
         
             $loan->loan_amount = Input::get('amount');
             $loan->loan_terms =Input::get('terms');
+            $loan->loan_reason =Input::get('reason');
             $loan->loan_interest = (Input::get('terms') == '15') ? '10' : '15';
             $loan->user_id = Auth::id();
             $loan->loan_status = 1;
@@ -109,7 +112,108 @@ class LoanController extends Controller
      */
     public function show(Loan $loan)
     {
-        //
+        $loan = DB::table('loan')
+                    ->join('profile', 'loan.user_id', '=', 'profile.user_id')
+                    ->get();
+        
+        return view('loan.loan-show',['loans' => $loan]);
+   
+    }
+
+        /**
+     * Change the status of the loan
+     *
+     * @param  \App\Loan  $loan
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request)
+    {
+        $loan = Loan::where('loan_id', '=', $request->loan_id)->get()->first();
+        
+        if($loan->loan_status == 1){
+
+            if($request->status == 2){
+                $update = ['loan_approved_by' => Auth::id(),
+                           'loan_approved_at' => date('Y-m-d H:i:s'),
+                           'loan_note' => $request->note, 
+                           'loan_status' => $request->status];
+            }
+
+            if($request->status == 5){
+                $update = ['loan_rejected_by' => Auth::id(),
+                           'loan_rejected_at' =>  date('Y-m-d H:i:s'),
+                           'loan_note' => $request->note,
+                           'loan_status' => $request->status];
+            }
+
+            Loan::where('loan_id', $request->loan_id)
+                        ->update($update);
+
+            return 'Record succesfully updated.';
+
+        }else{
+            if($loan->loan_status == 2){
+                return 'Updating record failed! This loan is already approved!';
+            }
+
+            if($loan->loan_status == 5){
+                return 'Updating record failed! This loan is already rejected!';
+            }
+            
+
+        }
+        //return $loan->loan_status;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Loan  $loan
+     * @return \Illuminate\Http\Response
+     */
+    public function detail(Loan $loan,$id)
+    {
+        //$loan = Loan::where('loan_id', '=', $id)->get();
+        $loan = DB::table('loan')
+                    ->join('profile', 'loan.user_id', '=', 'profile.user_id')
+                    ->where('loan_id','=',$id)
+                    ->get()->first();
+
+        
+        return view('loan.loan-detail',['loan' => $loan]);
+   
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Loan  $loan
+     * @return \Illuminate\Http\Response
+     */
+    public function list(){
+    // {
+        if( Input::get('t_type') == '1'){
+        $loans = DB::table('loan')
+                    ->join('profile', 'loan.user_id', '=', 'profile.user_id')
+                    ->where('loan_status','=','2')
+                    ->get();
+
+        }
+        if( Input::get('t_type') == '2'){
+        $loans = DB::table('loan')
+                    ->join('profile', 'loan.user_id', '=', 'profile.user_id')
+                    ->where('loan_status','=', '3')
+                    ->get();
+
+        }
+        $option = "";
+        foreach ($loans as $loan) {
+            $option .= "<option value='".$loan->loan_id."'>".$loan->profile_fullname.' - '.$loan->loan_amount."</option>";
+        }
+        return $option;
+   
     }
 
     /**

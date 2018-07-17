@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use DB;
 use App\Loan;
 use App\Document;
 use App\L_transaction;
@@ -102,7 +103,26 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-       
+      $users = DB::table('user')
+                  ->join('profile', 'user.user_id', '=', 'profile.user_id')
+                  ->get();
+      return view('admin.users',['users' => $users]);
+    }
+
+    /**
+     * Change the status to validated.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function approve(Request $request)
+    {
+      User::where('user_id', $request->user_id)
+                  ->update(['user_is_validated_by' => Auth::id(),
+                               'user_is_validated_at' => date('Y-m-d H:i:s'),
+                               'user_is_validated' => 1]);
+      return $request->user_id;
+
     }
 
 

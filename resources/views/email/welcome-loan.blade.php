@@ -12,6 +12,5 @@
             <p>Thank you,</p>
             <p>Fast Cash Pinoy</p>
         </div>
-
     </body>
 </html>

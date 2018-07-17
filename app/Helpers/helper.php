@@ -14,6 +14,27 @@ class Helper {
 		return $str_ticks;
 	}
 
+	public static  function loan_status($id){
+		
+		switch ($id) {
+		    case 1:
+		    	return "Pending";
+		        break;
+		    case 2:
+		        return "Approved";
+		        break;
+		    case 3:
+		        return "Released";
+		        break;
+			case 4:
+		        return "Paid";
+		        break;    
+		    case 5:
+		        return "Rejected";
+		        break;    
+		}
+	}
+
 
 	public static  function slider_labels($min, $max){
 		$str_ticks = "[";

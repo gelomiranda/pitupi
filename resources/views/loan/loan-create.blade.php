@@ -41,6 +41,10 @@
               <label class="radio-inline"><input type="radio" value="15" name="terms"  @if ( old('terms')  === '15') {{ "checked='checked'"}} @endif checked='checked'>15 Days</label>
               <label class="radio-inline"><input type="radio" value="30" name="terms"  @if ( old('terms')  === '30') {{ "checked='checked'"}} @endif >30 Days</label>
             </div>
+            <div class="form-group">
+              <p>Reason for borrowing:</p>
+              <textarea class="form-control" name="reason"></textarea>
+            </div>
             <hr/>     
             <p><b>Amount to pay: <span class="text-green" id="estimatedAmount">0.00 PHP</span></b></p>
             
@@ -62,9 +66,7 @@
                     <th scope="col">Terms</th>
                     <th scope="col">Interest</th>
                     <th scope="col">Total Repayment</th>
-
                     <th scope="col">Date Created</th>
-
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
@@ -77,8 +79,11 @@
                     <td scope="row">1</td>
                     <td>{{$loan->loan_amount}}</td>
                     <td>{{$loan->loan_terms}} Days</td>
-                    <td>{{$loan->loan_interest}} %</td>
+                    <td><i>{{$loan->loan_interest}} %</i></td>
                     <td>{{($loan->loan_amount + ($loan->loan_amount * $interest)) + 200}}</td>
+
+                    <td>{{ $loan->created_at}}</td>
+                    <td><label>{{ Helper::loan_status($loan->loan_status) }}</label></td>
                   </tr>
                   @endforeach
                 </tbody>
