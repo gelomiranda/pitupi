@@ -21,6 +21,13 @@
                 <p>  {{ session('status') }}</p>
               </div>
           @endif
+
+          @if (session('success'))
+              <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="success" aria-hidden="true">&times;</button>
+                <p>  {{ session('success') }}</p>
+              </div>
+          @endif
           <!-- start contact form -->
           <div class="cform" id="contact-form">
             <div id="sendmessage">Your message has been sent. Thank you!</div>

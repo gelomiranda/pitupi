@@ -262,6 +262,7 @@ class UserController extends Controller
             $message->from(Input::get('email_address'), 'Password Confirmation - Fast Cash Pinoy');
             $message->to(Input::get('email_address'))->subject('Password Confirmation - Fast Cash Pinoy');
           });
+          return Redirect::to('register')->with('success', 'Thank you for creating an account. An account activation link was emailed to you.');
         } 
         
       }
